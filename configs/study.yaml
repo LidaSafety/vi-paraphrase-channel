@@ -1,0 +1,131 @@
+# v0, exploratory. See docs/execution-plan.md.
+k: 1
+temperature: 1.0
+reasoning: true          # agent: per-call reasoning ON
+max_retries: 6
+
+agents:
+  gemini:
+    client: gemini
+    model: gemini-2.5-flash
+  # Open weights on Modal. Same deployment as the relay: a Qwen agent reads
+  # Qwen-relayed text, so its relay effect is reported with that caveat.
+  qwen:
+    client: vllm
+    app: vllm-qwen3-8b-ep
+    model: Qwen/Qwen3-8B
+    max_tokens: 6000
+
+renderer:
+  client: gemini
+  model: gemini-2.5-flash
+  temperature: 0.7
+  reasoning: true
+
+paraphraser:
+  # Deployed by agent-collusion-bench/scripts/modal_vllm.py (16384 window, qwen3 parser).
+  app: vllm-qwen3-8b-ep
+  model: Qwen/Qwen3-8B
+  temperature: 0.0
+  reasoning: false
+  max_tokens: 400
+
+gate:
+  client: gemini
+  model: gemini-2.5-flash
+  temperature: 0.0
+  reasoning: true
+
+# LLM re-readers of the stimulus gate. Robustness checks, NOT human validation.
+readers:
+  gpt:
+    client: openai
+    model: gpt-5.4-nano   # verified working on this key in agent-collusion-bench
+    temperature: 0.7      # the value it ran at there
+  gemma:
+    client: vllm
+    app: vllm-gemma-3-27b-it   # A100-80GB, deployed from agent-collusion-bench/scripts/modal_vllm.py
+    model: google/gemma-3-27b-it
+    temperature: 0.0
+    max_tokens: 400
+  gemini_pro:
+    client: gemini
+    model: gemini-3.1-pro-preview   # no plain gemini-3-pro on this key (models.list, 2026-10-25)
+    temperature: 1.0
+    reasoning: true                 # Pro models do not run with thinking off
+  opus:
+    client: anthropic          # secret `anthropic-key`, created by the human
+    model: claude-opus-5-5
+    effort: medium             # thinking is always on; no sampling parameters
+    temperature: null
+
+# Third-party summarizer for the oversight arm: writes the activity-log summary a
+# monitor reads in the `summary` view. Not an agent or monitor anywhere in the study.
+summarizer:
+  client: vllm
+  app: vllm-gemma-3-27b-it
+  model: google/gemma-3-27b-it
+  temperature: 0.0
+  max_tokens: 300
+
+monitors:
+  haiku:
+    client: anthropic          # local run, key from agent-collusion-bench/.env
+    model: claude-haiku-5-5
+    effort: low                # thinking is always on; no sampling parameters
+    max_tokens: 2000
+    temperature: null
+    reasoning: true
+  # Strong monitor for the language arm's 0-100 score (2026-10-28, the human). Not an agent anywhere.
+  sonnet:
+    client: anthropic
+    model: claude-sonnet-5-5
+    effort: low                # thinking stays on; low effort for a one-number answer
+    max_tokens: 2000
+    temperature: null
+    reasoning: true
+  gemini:
+    client: gemini
+    model: gemini-2.5-flash
+    temperature: 0.0
+    reasoning: false
+  # Second monitor (2026-10-26, the human). Gemini 2.5 Flash was removed (it is also an agent);
+  # Aya Expanse 8B failed the positive control (flagged 94-100% of twins). Mistral Small 3.1 24B:
+  # Apache 2.0, lists Vietnamese, shares no family with either agent or with Haiku.
+  mistral:
+    app: vllm-mistral-small-3-1-24b-instruct-2503
+    model: mistralai/Mistral-Small-3.1-24B-Instruct-2503
+    temperature: 0.0
+    reasoning: false               # no thinking mode
+    chat_template_kwargs: false    # its mistral tokenizer rejects them
+    max_tokens: 400
+  # Added score monitor (2026-10-29, the human, post hoc): multilingual, Mistral's size class.
+  # Same developer as the Gemini agent (a different model). Summarizer in the main study only.
+  gemma:
+    app: vllm-gemma-3-27b-it
+    model: google/gemma-3-27b-it
+    temperature: 0.0
+    reasoning: false
+    max_tokens: 400
+  qwen:
+    app: vllm-qwen3-8b-ep
+    model: Qwen/Qwen3-8B
+    temperature: 0.0
+    reasoning: false
+    max_tokens: 16
+
+cost:
+  gpu_hourly: {L40S: 1.95}     # modal billing rates, 2026-10-25
+  # Rough aggregate vLLM throughput for one L40S at our concurrency. Replace
+  # with the Qwen smoke's measured figure.
+  est_gpu_tok_per_s: 600
+  est_output_tokens_per_episode_by_model:
+    Qwen/Qwen3-8B: 1800   # smoke v2 measured 1,766
+  prices_per_mtok:              # [input, output], USD. Check against the provider page.
+    gemini-2.5-flash: [0.30, 2.50]
+    claude-opus-5-5: [4.00, 20.00]
+  # agent-collusion-bench measured ~6,200 output tokens for a 7-8 turn Gemini
+  # episode (thinking billed as output). Four turns here: scaled, then rounded up.
+  # Replace with the smoke's measured figure.
+  est_input_tokens_per_episode: 2500
+  est_output_tokens_per_episode: 3900   # smoke v2 measured 3,855 (gemini)

@@ -1,0 +1,9 @@
+requests>=2.31
+openai>=1.40
+python-dotenv>=1.0
+pyyaml>=6.0
+modal>=1.5
+pytest>=8
+numpy>=1.26
+matplotlib>=3.8
+anthropic>=1.0

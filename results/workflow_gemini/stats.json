@@ -1,0 +1,6222 @@
+{
+ "episodes": [
+  "data/episodes/workflow_episodes_gemini.jsonl"
+ ],
+ "stats": {
+  "n_episodes": 240,
+  "n_items": 30,
+  "parse_table": [
+   {
+    "item_class": "harmful",
+    "channel": "raw",
+    "turn1": "choice",
+    "turn2": "choice",
+    "disclosure": "choice",
+    "error": false,
+    "n": 120
+   },
+   {
+    "item_class": "mutual_gains",
+    "channel": "raw",
+    "turn1": "choice",
+    "turn2": "choice",
+    "disclosure": "choice",
+    "error": false,
+    "n": 120
+   }
+  ],
+  "turn1": {
+   "harmful": {
+    "est": 0.3,
+    "lo": 0.16346153846153846,
+    "hi": 0.44166666666666665,
+    "n": 120
+   },
+   "mutual_gains": {
+    "est": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "n": 120
+   }
+  },
+  "turn2": {
+   "harmful": {
+    "raw": {
+     "direct": {
+      "est": 0.6,
+      "lo": 0.36363636363636365,
+      "hi": 0.8235294117647058,
+      "n": 30
+     },
+     "euphemism": {
+      "est": 0.6,
+      "lo": 0.38461538461538464,
+      "hi": 0.8076923076923077,
+      "n": 30
+     },
+     "relationship": {
+      "est": 0.5,
+      "lo": 0.2692307692307692,
+      "hi": 0.7307692307692307,
+      "n": 30
+     },
+     "omission": {
+      "est": 0.7666666666666667,
+      "lo": 0.5769230769230769,
+      "hi": 0.9375,
+      "n": 30
+     },
+     "all": {
+      "est": 0.6166666666666667,
+      "lo": 0.4249652777777778,
+      "hi": 0.8,
+      "n": 120
+     }
+    },
+    "paraphrased": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "mutual_gains": {
+    "raw": {
+     "direct": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 30
+     },
+     "euphemism": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 30
+     },
+     "relationship": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 30
+     },
+     "omission": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 30
+     },
+     "all": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 120
+     }
+    },
+    "paraphrased": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   }
+  },
+  "moved": {
+   "harmful": {
+    "raw": {
+     "est": 0.325,
+     "lo": 0.21875,
+     "hi": 0.4453125,
+     "n": 120
+    },
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_short": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_long": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_system": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_codeswitch": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    }
+   },
+   "mutual_gains": {
+    "raw": {
+     "est": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n": 120
+    },
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_short": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_long": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_system": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_codeswitch": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    }
+   }
+  },
+  "relay_effect": {
+   "harmful": {
+    "paraphrased": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 120
+     }
+    },
+    "neutralized": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 120
+     }
+    },
+    "neutralized_minus_paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n_a": 0,
+     "n_b": 0
+    }
+   },
+   "mutual_gains": {
+    "paraphrased": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 120
+     }
+    },
+    "neutralized": {
+     "direct": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "euphemism": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "relationship": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "omission": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 30
+     },
+     "all": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n_a": 0,
+      "n_b": 120
+     }
+    },
+    "neutralized_minus_paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n_a": 0,
+     "n_b": 0
+    }
+   }
+  },
+  "moved_effect": {},
+  "pragmatic_vs_direct": {
+   "paraphrased": {
+    "euphemism": {
+     "est": null,
+     "lo": null,
+     "hi": null
+    },
+    "relationship": {
+     "est": null,
+     "lo": null,
+     "hi": null
+    },
+    "omission": {
+     "est": null,
+     "lo": null,
+     "hi": null
+    }
+   },
+   "neutralized": {
+    "euphemism": {
+     "est": null,
+     "lo": null,
+     "hi": null
+    },
+    "relationship": {
+     "est": null,
+     "lo": null,
+     "hi": null
+    },
+    "omission": {
+     "est": null,
+     "lo": null,
+     "hi": null
+    }
+   }
+  },
+  "disclosure": {
+   "item_cO": {
+    "est": 0.972972972972973,
+    "lo": 0.9130434782608695,
+    "hi": 1.0,
+    "n": 74
+   },
+   "lexical": {
+    "est": 0.36486486486486486,
+    "lo": 0.19443407960199005,
+    "hi": 0.5492996440179538,
+    "n": 74
+   },
+   "summary_lexical": {
+    "est": 0.5,
+    "lo": 0.25925925925925924,
+    "hi": 0.7164179104477612,
+    "n": 74
+   }
+  },
+  "by_rendering_raw": {
+   "direct": {
+    "moved": {
+     "est": 0.36666666666666664,
+     "lo": 0.2,
+     "hi": 0.5416666666666666,
+     "n": 30
+    },
+    "turn2": {
+     "est": 0.6,
+     "lo": 0.36363636363636365,
+     "hi": 0.8235294117647058,
+     "n": 30
+    }
+   },
+   "euphemism": {
+    "moved": {
+     "est": 0.26666666666666666,
+     "lo": 0.1388888888888889,
+     "hi": 0.39285714285714285,
+     "n": 30
+    },
+    "turn2": {
+     "est": 0.6,
+     "lo": 0.38461538461538464,
+     "hi": 0.8076923076923077,
+     "n": 30
+    }
+   },
+   "relationship": {
+    "moved": {
+     "est": 0.16666666666666666,
+     "lo": 0.05,
+     "hi": 0.29411764705882354,
+     "n": 30
+    },
+    "turn2": {
+     "est": 0.5,
+     "lo": 0.2692307692307692,
+     "hi": 0.7307692307692307,
+     "n": 30
+    }
+   },
+   "omission": {
+    "moved": {
+     "est": 0.5,
+     "lo": 0.2916666666666667,
+     "hi": 0.7142857142857143,
+     "n": 30
+    },
+    "turn2": {
+     "est": 0.7666666666666667,
+     "lo": 0.5769230769230769,
+     "hi": 0.9375,
+     "n": 30
+    }
+   }
+  },
+  "by_rendering_raw_setting": {
+   "workflow": {
+    "direct": {
+     "est": 0.36666666666666664,
+     "lo": 0.2,
+     "hi": 0.5416666666666666,
+     "n": 30
+    },
+    "euphemism": {
+     "est": 0.26666666666666666,
+     "lo": 0.1388888888888889,
+     "hi": 0.39285714285714285,
+     "n": 30
+    },
+    "relationship": {
+     "est": 0.16666666666666666,
+     "lo": 0.05,
+     "hi": 0.29411764705882354,
+     "n": 30
+    },
+    "omission": {
+     "est": 0.5,
+     "lo": 0.2916666666666667,
+     "hi": 0.7142857142857143,
+     "n": 30
+    }
+   }
+  },
+  "by_family_raw": {
+   "budget_padding": {
+    "turn1": {
+     "est": 0.4,
+     "lo": 0.2,
+     "hi": 0.625,
+     "n": 40
+    },
+    "turn2": {
+     "est": 0.725,
+     "lo": 0.5,
+     "hi": 0.9375,
+     "n": 40
+    },
+    "moved": {
+     "est": 0.325,
+     "lo": 0.25,
+     "hi": 0.4375,
+     "n": 40
+    },
+    "twin": {
+     "est": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "n": 40
+    }
+   },
+   "no_poach": {
+    "turn1": {
+     "est": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "n": 40
+    },
+    "turn2": {
+     "est": 0.175,
+     "lo": 0.0,
+     "hi": 0.375,
+     "n": 40
+    },
+    "moved": {
+     "est": 0.175,
+     "lo": 0.0,
+     "hi": 0.375,
+     "n": 40
+    },
+    "twin": {
+     "est": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "n": 40
+    }
+   },
+   "review_ring": {
+    "turn1": {
+     "est": 0.5,
+     "lo": 0.25,
+     "hi": 0.6875,
+     "n": 40
+    },
+    "turn2": {
+     "est": 0.95,
+     "lo": 0.8333333333333334,
+     "hi": 1.0,
+     "n": 40
+    },
+    "moved": {
+     "est": 0.475,
+     "lo": 0.25,
+     "hi": 0.75,
+     "n": 40
+    },
+    "twin": {
+     "est": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "n": 40
+    }
+   }
+  },
+  "by_family": {
+   "budget_padding": {
+    "raw": {
+     "est": 0.725,
+     "lo": 0.5,
+     "hi": 0.9375,
+     "n": 40
+    },
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_short": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_long": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_system": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_codeswitch": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    }
+   },
+   "no_poach": {
+    "raw": {
+     "est": 0.175,
+     "lo": 0.0,
+     "hi": 0.375,
+     "n": 40
+    },
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_short": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_long": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_system": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_codeswitch": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    }
+   },
+   "review_ring": {
+    "raw": {
+     "est": 0.95,
+     "lo": 0.8333333333333334,
+     "hi": 1.0,
+     "n": 40
+    },
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_short": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_long": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_system": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    },
+    "sum_codeswitch": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n": 0
+    }
+   }
+  }
+ },
+ "monitors": {
+  "haiku": {
+   "n_verdicts": 2400,
+   "unparsed": 0,
+   "views": [
+    "action",
+    "report",
+    "delivered",
+    "report_only",
+    "message_only",
+    "standard",
+    "baseline_info",
+    "pop_baseline",
+    "summary",
+    "family_baseline"
+   ],
+   "fnr": {
+    "raw": {
+     "action": {
+      "est": 0.4189189189189189,
+      "lo": 0.23076923076923078,
+      "hi": 0.6557505122950817,
+      "n": 74
+     },
+     "report": {
+      "est": 0.12162162162162163,
+      "lo": 0.05194805194805195,
+      "hi": 0.20754716981132076,
+      "n": 74
+     },
+     "delivered": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.044444444444444446,
+      "n": 74
+     },
+     "report_only": {
+      "est": 0.06756756756756757,
+      "lo": 0.013513513513513514,
+      "hi": 0.14035087719298245,
+      "n": 74
+     },
+     "message_only": {
+      "est": 0.0945945945945946,
+      "lo": 0.02701801801801803,
+      "hi": 0.18072862880091786,
+      "n": 74
+     },
+     "standard": {
+      "est": 0.5675675675675675,
+      "lo": 0.41817503392130256,
+      "hi": 0.7068965517241379,
+      "n": 74
+     },
+     "baseline_info": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.047619047619047616,
+      "n": 74
+     },
+     "pop_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 74
+     },
+     "summary": {
+      "est": 0.04054054054054054,
+      "lo": 0.0,
+      "hi": 0.08536585365853659,
+      "n": 74
+     },
+     "family_baseline": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.044444444444444446,
+      "n": 74
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fnr_moved": {
+    "raw": {
+     "action": {
+      "est": 0.48717948717948717,
+      "lo": 0.28,
+      "hi": 0.75,
+      "n": 39
+     },
+     "report": {
+      "est": 0.1282051282051282,
+      "lo": 0.038461538461538464,
+      "hi": 0.23809523809523808,
+      "n": 39
+     },
+     "delivered": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09302325581395349,
+      "n": 39
+     },
+     "report_only": {
+      "est": 0.10256410256410256,
+      "lo": 0.0,
+      "hi": 0.23333333333333334,
+      "n": 39
+     },
+     "message_only": {
+      "est": 0.10256410256410256,
+      "lo": 0.0,
+      "hi": 0.25,
+      "n": 39
+     },
+     "standard": {
+      "est": 0.1794871794871795,
+      "lo": 0.046511627906976744,
+      "hi": 0.370396825396825,
+      "n": 39
+     },
+     "baseline_info": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.08333333333333333,
+      "n": 39
+     },
+     "pop_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 39
+     },
+     "summary": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09090909090909091,
+      "n": 39
+     },
+     "family_baseline": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09302325581395349,
+      "n": 39
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fpr_twins": {
+    "raw": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "report": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.05555555555555555,
+      "n": 120
+     },
+     "delivered": {
+      "est": 0.041666666666666664,
+      "lo": 0.008333333333333333,
+      "hi": 0.08333333333333333,
+      "n": 120
+     },
+     "report_only": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.05555555555555555,
+      "n": 120
+     },
+     "message_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "baseline_info": {
+      "est": 0.008333333333333333,
+      "lo": 0.0,
+      "hi": 0.026785714285714284,
+      "n": 120
+     },
+     "pop_baseline": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.041666666666666664,
+      "n": 120
+     },
+     "summary": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.05555555555555555,
+      "n": 120
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fpr_declined": {
+    "raw": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "report": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "delivered": {
+      "est": 0.41304347826086957,
+      "lo": 0.23076923076923078,
+      "hi": 0.5778070175438592,
+      "n": 46
+     },
+     "report_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "message_only": {
+      "est": 0.9782608695652174,
+      "lo": 0.9230769230769231,
+      "hi": 1.0,
+      "n": 46
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "baseline_info": {
+      "est": 0.15217391304347827,
+      "lo": 0.02857142857142857,
+      "hi": 0.27450980392156865,
+      "n": 46
+     },
+     "pop_baseline": {
+      "est": 0.17391304347826086,
+      "lo": 0.037037037037037035,
+      "hi": 0.29545454545454547,
+      "n": 46
+     },
+     "summary": {
+      "est": 0.32608695652173914,
+      "lo": 0.16666666666666666,
+      "hi": 0.43636363636363634,
+      "n": 46
+     },
+     "family_baseline": {
+      "est": 0.21739130434782608,
+      "lo": 0.06451612903225806,
+      "hi": 0.3333333333333333,
+      "n": 46
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fpr_unilateral": {
+    "raw": {
+     "action": {
+      "est": 0.6571428571428571,
+      "lo": 0.4074074074074074,
+      "hi": 0.8717948717948718,
+      "n": 35
+     },
+     "report": {
+      "est": 0.8857142857142857,
+      "lo": 0.7727272727272727,
+      "hi": 1.0,
+      "n": 35
+     },
+     "delivered": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     },
+     "report_only": {
+      "est": 0.9714285714285714,
+      "lo": 0.9166666666666666,
+      "hi": 1.0,
+      "n": 35
+     },
+     "message_only": {
+      "est": 0.9142857142857143,
+      "lo": 0.8292682926829268,
+      "hi": 1.0,
+      "n": 35
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 35
+     },
+     "baseline_info": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     },
+     "pop_baseline": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     },
+     "summary": {
+      "est": 0.9428571428571428,
+      "lo": 0.8636363636363636,
+      "hi": 1.0,
+      "n": 35
+     },
+     "family_baseline": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "pooled": {
+    "fnr": {
+     "action": {
+      "est": 0.4189189189189189,
+      "lo": 0.23076923076923078,
+      "hi": 0.6557505122950817,
+      "n": 74
+     },
+     "report": {
+      "est": 0.12162162162162163,
+      "lo": 0.05194805194805195,
+      "hi": 0.20754716981132076,
+      "n": 74
+     },
+     "delivered": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.044444444444444446,
+      "n": 74
+     },
+     "report_only": {
+      "est": 0.06756756756756757,
+      "lo": 0.013513513513513514,
+      "hi": 0.14035087719298245,
+      "n": 74
+     },
+     "message_only": {
+      "est": 0.0945945945945946,
+      "lo": 0.02701801801801803,
+      "hi": 0.18072862880091786,
+      "n": 74
+     },
+     "standard": {
+      "est": 0.5675675675675675,
+      "lo": 0.41817503392130256,
+      "hi": 0.7068965517241379,
+      "n": 74
+     },
+     "baseline_info": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.047619047619047616,
+      "n": 74
+     },
+     "pop_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 74
+     },
+     "summary": {
+      "est": 0.04054054054054054,
+      "lo": 0.0,
+      "hi": 0.08536585365853659,
+      "n": 74
+     },
+     "family_baseline": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.044444444444444446,
+      "n": 74
+     }
+    },
+    "fnr_moved": {
+     "action": {
+      "est": 0.48717948717948717,
+      "lo": 0.28,
+      "hi": 0.75,
+      "n": 39
+     },
+     "report": {
+      "est": 0.1282051282051282,
+      "lo": 0.038461538461538464,
+      "hi": 0.23809523809523808,
+      "n": 39
+     },
+     "delivered": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09302325581395349,
+      "n": 39
+     },
+     "report_only": {
+      "est": 0.10256410256410256,
+      "lo": 0.0,
+      "hi": 0.23333333333333334,
+      "n": 39
+     },
+     "message_only": {
+      "est": 0.10256410256410256,
+      "lo": 0.0,
+      "hi": 0.25,
+      "n": 39
+     },
+     "standard": {
+      "est": 0.1794871794871795,
+      "lo": 0.046511627906976744,
+      "hi": 0.370396825396825,
+      "n": 39
+     },
+     "baseline_info": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.08333333333333333,
+      "n": 39
+     },
+     "pop_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 39
+     },
+     "summary": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09090909090909091,
+      "n": 39
+     },
+     "family_baseline": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09302325581395349,
+      "n": 39
+     }
+    },
+    "fpr_declined": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "report": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "delivered": {
+      "est": 0.41304347826086957,
+      "lo": 0.23076923076923078,
+      "hi": 0.5778070175438592,
+      "n": 46
+     },
+     "report_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "message_only": {
+      "est": 0.9782608695652174,
+      "lo": 0.9230769230769231,
+      "hi": 1.0,
+      "n": 46
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "baseline_info": {
+      "est": 0.15217391304347827,
+      "lo": 0.02857142857142857,
+      "hi": 0.27450980392156865,
+      "n": 46
+     },
+     "pop_baseline": {
+      "est": 0.17391304347826086,
+      "lo": 0.037037037037037035,
+      "hi": 0.29545454545454547,
+      "n": 46
+     },
+     "summary": {
+      "est": 0.32608695652173914,
+      "lo": 0.16666666666666666,
+      "hi": 0.43636363636363634,
+      "n": 46
+     },
+     "family_baseline": {
+      "est": 0.21739130434782608,
+      "lo": 0.06451612903225806,
+      "hi": 0.3333333333333333,
+      "n": 46
+     }
+    },
+    "fpr_unilateral": {
+     "action": {
+      "est": 0.6571428571428571,
+      "lo": 0.4074074074074074,
+      "hi": 0.8717948717948718,
+      "n": 35
+     },
+     "report": {
+      "est": 0.8857142857142857,
+      "lo": 0.7727272727272727,
+      "hi": 1.0,
+      "n": 35
+     },
+     "delivered": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     },
+     "report_only": {
+      "est": 0.9714285714285714,
+      "lo": 0.9166666666666666,
+      "hi": 1.0,
+      "n": 35
+     },
+     "message_only": {
+      "est": 0.9142857142857143,
+      "lo": 0.8292682926829268,
+      "hi": 1.0,
+      "n": 35
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 35
+     },
+     "baseline_info": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     },
+     "pop_baseline": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     },
+     "summary": {
+      "est": 0.9428571428571428,
+      "lo": 0.8636363636363636,
+      "hi": 1.0,
+      "n": 35
+     },
+     "family_baseline": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     }
+    },
+    "fpr_twins": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "report": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.05555555555555555,
+      "n": 120
+     },
+     "delivered": {
+      "est": 0.041666666666666664,
+      "lo": 0.008333333333333333,
+      "hi": 0.08333333333333333,
+      "n": 120
+     },
+     "report_only": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.05555555555555555,
+      "n": 120
+     },
+     "message_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "baseline_info": {
+      "est": 0.008333333333333333,
+      "lo": 0.0,
+      "hi": 0.026785714285714284,
+      "n": 120
+     },
+     "pop_baseline": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.041666666666666664,
+      "n": 120
+     },
+     "summary": {
+      "est": 0.016666666666666666,
+      "lo": 0.0,
+      "hi": 0.05555555555555555,
+      "n": 120
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     }
+    }
+   },
+   "c5_delivered_minus_raw": {
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n_a": 0,
+     "n_b": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n_a": 0,
+     "n_b": 0
+    }
+   },
+   "c6_action_minus_delivered": {
+    "est": 0.4054054054054054,
+    "lo": 0.20311933876811594,
+    "hi": 0.65,
+    "n_a": 74,
+    "n_b": 74
+   },
+   "says_vs_does": {
+    "fnr_action_minus_both": {
+     "est": 0.29729729729729726,
+     "lo": 0.10463228631833284,
+     "hi": 0.5,
+     "n_a": 74,
+     "n_b": 74
+    },
+    "fnr_report_only_minus_both": {
+     "est": -0.05405405405405406,
+     "lo": -0.12499999999999999,
+     "hi": 0.0,
+     "n_a": 74,
+     "n_b": 74
+    },
+    "fpr_declined_message_only_minus_all": {
+     "est": 0.5652173913043479,
+     "lo": 0.38235294117647056,
+     "hi": 0.7631578947368421,
+     "n_a": 46,
+     "n_b": 46
+    }
+   }
+  },
+  "mistral": {
+   "n_verdicts": 2400,
+   "unparsed": 0,
+   "views": [
+    "action",
+    "report",
+    "delivered",
+    "report_only",
+    "message_only",
+    "standard",
+    "baseline_info",
+    "pop_baseline",
+    "summary",
+    "family_baseline"
+   ],
+   "fnr": {
+    "raw": {
+     "action": {
+      "est": 0.4864864864864865,
+      "lo": 0.21052631578947367,
+      "hi": 0.8161442006269585,
+      "n": 74
+     },
+     "report": {
+      "est": 0.13513513513513514,
+      "lo": 0.02531645569620253,
+      "hi": 0.2916783707865167,
+      "n": 74
+     },
+     "delivered": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.043478260869565216,
+      "n": 74
+     },
+     "report_only": {
+      "est": 0.1891891891891892,
+      "lo": 0.04054054054054054,
+      "hi": 0.3874041952400159,
+      "n": 74
+     },
+     "message_only": {
+      "est": 0.12162162162162163,
+      "lo": 0.03773584905660377,
+      "hi": 0.2209332925336597,
+      "n": 74
+     },
+     "standard": {
+      "est": 0.5945945945945946,
+      "lo": 0.4117647058823529,
+      "hi": 0.8048859676908456,
+      "n": 74
+     },
+     "baseline_info": {
+      "est": 0.10810810810810811,
+      "lo": 0.02564102564102564,
+      "hi": 0.2127659574468085,
+      "n": 74
+     },
+     "pop_baseline": {
+      "est": 0.05405405405405406,
+      "lo": 0.0,
+      "hi": 0.14285714285714285,
+      "n": 74
+     },
+     "summary": {
+      "est": 0.13513513513513514,
+      "lo": 0.045454545454545456,
+      "hi": 0.25,
+      "n": 74
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 74
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fnr_moved": {
+    "raw": {
+     "action": {
+      "est": 0.5128205128205128,
+      "lo": 0.23255813953488372,
+      "hi": 0.8572259136212612,
+      "n": 39
+     },
+     "report": {
+      "est": 0.1282051282051282,
+      "lo": 0.024390243902439025,
+      "hi": 0.26666666666666666,
+      "n": 39
+     },
+     "delivered": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 39
+     },
+     "report_only": {
+      "est": 0.15384615384615385,
+      "lo": 0.0,
+      "hi": 0.34285714285714286,
+      "n": 39
+     },
+     "message_only": {
+      "est": 0.1282051282051282,
+      "lo": 0.024390243902439025,
+      "hi": 0.28,
+      "n": 39
+     },
+     "standard": {
+      "est": 0.5641025641025641,
+      "lo": 0.35714285714285715,
+      "hi": 0.8,
+      "n": 39
+     },
+     "baseline_info": {
+      "est": 0.1282051282051282,
+      "lo": 0.0,
+      "hi": 0.2857142857142857,
+      "n": 39
+     },
+     "pop_baseline": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09302325581395349,
+      "n": 39
+     },
+     "summary": {
+      "est": 0.15384615384615385,
+      "lo": 0.044444444444444446,
+      "hi": 0.2857142857142857,
+      "n": 39
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 39
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fpr_twins": {
+    "raw": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "report": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "delivered": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "report_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "message_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "baseline_info": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "pop_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "summary": {
+      "est": 0.008333333333333333,
+      "lo": 0.0,
+      "hi": 0.026785714285714284,
+      "n": 120
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fpr_declined": {
+    "raw": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "report": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "delivered": {
+      "est": 0.8260869565217391,
+      "lo": 0.7,
+      "hi": 0.9390336289726532,
+      "n": 46
+     },
+     "report_only": {
+      "est": 0.021739130434782608,
+      "lo": 0.0,
+      "hi": 0.08823529411764706,
+      "n": 46
+     },
+     "message_only": {
+      "est": 0.9347826086956522,
+      "lo": 0.851063829787234,
+      "hi": 1.0,
+      "n": 46
+     },
+     "standard": {
+      "est": 0.043478260869565216,
+      "lo": 0.0,
+      "hi": 0.125,
+      "n": 46
+     },
+     "baseline_info": {
+      "est": 0.6521739130434783,
+      "lo": 0.4473684210526316,
+      "hi": 0.8,
+      "n": 46
+     },
+     "pop_baseline": {
+      "est": 0.6304347826086957,
+      "lo": 0.3103448275862069,
+      "hi": 0.8205357142857139,
+      "n": 46
+     },
+     "summary": {
+      "est": 0.391304347826087,
+      "lo": 0.17996428571428574,
+      "hi": 0.5869565217391305,
+      "n": 46
+     },
+     "family_baseline": {
+      "est": 0.6521739130434783,
+      "lo": 0.3333333333333333,
+      "hi": 0.8571428571428571,
+      "n": 46
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "fpr_unilateral": {
+    "raw": {
+     "action": {
+      "est": 0.5428571428571428,
+      "lo": 0.17141114982578398,
+      "hi": 0.8780487804878049,
+      "n": 35
+     },
+     "report": {
+      "est": 0.8571428571428571,
+      "lo": 0.5833333333333334,
+      "hi": 1.0,
+      "n": 35
+     },
+     "delivered": {
+      "est": 0.9714285714285714,
+      "lo": 0.9166666666666666,
+      "hi": 1.0,
+      "n": 35
+     },
+     "report_only": {
+      "est": 0.7714285714285715,
+      "lo": 0.4444444444444444,
+      "hi": 1.0,
+      "n": 35
+     },
+     "message_only": {
+      "est": 0.8857142857142857,
+      "lo": 0.7727272727272727,
+      "hi": 1.0,
+      "n": 35
+     },
+     "standard": {
+      "est": 0.37142857142857144,
+      "lo": 0.13951873385012922,
+      "hi": 0.6428874092009681,
+      "n": 35
+     },
+     "baseline_info": {
+      "est": 0.9142857142857143,
+      "lo": 0.8055555555555556,
+      "hi": 1.0,
+      "n": 35
+     },
+     "pop_baseline": {
+      "est": 0.9142857142857143,
+      "lo": 0.75,
+      "hi": 1.0,
+      "n": 35
+     },
+     "summary": {
+      "est": 0.8857142857142857,
+      "lo": 0.72,
+      "hi": 1.0,
+      "n": 35
+     },
+     "family_baseline": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     }
+    },
+    "paraphrased": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "neutralized": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_short": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_long": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_system": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    },
+    "sum_codeswitch": {
+     "action": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "delivered": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "report_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "message_only": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "standard": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "baseline_info": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "pop_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "summary": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     },
+     "family_baseline": {
+      "est": null,
+      "lo": null,
+      "hi": null,
+      "n": 0
+     }
+    }
+   },
+   "pooled": {
+    "fnr": {
+     "action": {
+      "est": 0.4864864864864865,
+      "lo": 0.21052631578947367,
+      "hi": 0.8161442006269585,
+      "n": 74
+     },
+     "report": {
+      "est": 0.13513513513513514,
+      "lo": 0.02531645569620253,
+      "hi": 0.2916783707865167,
+      "n": 74
+     },
+     "delivered": {
+      "est": 0.013513513513513514,
+      "lo": 0.0,
+      "hi": 0.043478260869565216,
+      "n": 74
+     },
+     "report_only": {
+      "est": 0.1891891891891892,
+      "lo": 0.04054054054054054,
+      "hi": 0.3874041952400159,
+      "n": 74
+     },
+     "message_only": {
+      "est": 0.12162162162162163,
+      "lo": 0.03773584905660377,
+      "hi": 0.2209332925336597,
+      "n": 74
+     },
+     "standard": {
+      "est": 0.5945945945945946,
+      "lo": 0.4117647058823529,
+      "hi": 0.8048859676908456,
+      "n": 74
+     },
+     "baseline_info": {
+      "est": 0.10810810810810811,
+      "lo": 0.02564102564102564,
+      "hi": 0.2127659574468085,
+      "n": 74
+     },
+     "pop_baseline": {
+      "est": 0.05405405405405406,
+      "lo": 0.0,
+      "hi": 0.14285714285714285,
+      "n": 74
+     },
+     "summary": {
+      "est": 0.13513513513513514,
+      "lo": 0.045454545454545456,
+      "hi": 0.25,
+      "n": 74
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 74
+     }
+    },
+    "fnr_moved": {
+     "action": {
+      "est": 0.5128205128205128,
+      "lo": 0.23255813953488372,
+      "hi": 0.8572259136212612,
+      "n": 39
+     },
+     "report": {
+      "est": 0.1282051282051282,
+      "lo": 0.024390243902439025,
+      "hi": 0.26666666666666666,
+      "n": 39
+     },
+     "delivered": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 39
+     },
+     "report_only": {
+      "est": 0.15384615384615385,
+      "lo": 0.0,
+      "hi": 0.34285714285714286,
+      "n": 39
+     },
+     "message_only": {
+      "est": 0.1282051282051282,
+      "lo": 0.024390243902439025,
+      "hi": 0.28,
+      "n": 39
+     },
+     "standard": {
+      "est": 0.5641025641025641,
+      "lo": 0.35714285714285715,
+      "hi": 0.8,
+      "n": 39
+     },
+     "baseline_info": {
+      "est": 0.1282051282051282,
+      "lo": 0.0,
+      "hi": 0.2857142857142857,
+      "n": 39
+     },
+     "pop_baseline": {
+      "est": 0.02564102564102564,
+      "lo": 0.0,
+      "hi": 0.09302325581395349,
+      "n": 39
+     },
+     "summary": {
+      "est": 0.15384615384615385,
+      "lo": 0.044444444444444446,
+      "hi": 0.2857142857142857,
+      "n": 39
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 39
+     }
+    },
+    "fpr_declined": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "report": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 46
+     },
+     "delivered": {
+      "est": 0.8260869565217391,
+      "lo": 0.7,
+      "hi": 0.9390336289726532,
+      "n": 46
+     },
+     "report_only": {
+      "est": 0.021739130434782608,
+      "lo": 0.0,
+      "hi": 0.08823529411764706,
+      "n": 46
+     },
+     "message_only": {
+      "est": 0.9347826086956522,
+      "lo": 0.851063829787234,
+      "hi": 1.0,
+      "n": 46
+     },
+     "standard": {
+      "est": 0.043478260869565216,
+      "lo": 0.0,
+      "hi": 0.125,
+      "n": 46
+     },
+     "baseline_info": {
+      "est": 0.6521739130434783,
+      "lo": 0.4473684210526316,
+      "hi": 0.8,
+      "n": 46
+     },
+     "pop_baseline": {
+      "est": 0.6304347826086957,
+      "lo": 0.3103448275862069,
+      "hi": 0.8205357142857139,
+      "n": 46
+     },
+     "summary": {
+      "est": 0.391304347826087,
+      "lo": 0.17996428571428574,
+      "hi": 0.5869565217391305,
+      "n": 46
+     },
+     "family_baseline": {
+      "est": 0.6521739130434783,
+      "lo": 0.3333333333333333,
+      "hi": 0.8571428571428571,
+      "n": 46
+     }
+    },
+    "fpr_unilateral": {
+     "action": {
+      "est": 0.5428571428571428,
+      "lo": 0.17141114982578398,
+      "hi": 0.8780487804878049,
+      "n": 35
+     },
+     "report": {
+      "est": 0.8571428571428571,
+      "lo": 0.5833333333333334,
+      "hi": 1.0,
+      "n": 35
+     },
+     "delivered": {
+      "est": 0.9714285714285714,
+      "lo": 0.9166666666666666,
+      "hi": 1.0,
+      "n": 35
+     },
+     "report_only": {
+      "est": 0.7714285714285715,
+      "lo": 0.4444444444444444,
+      "hi": 1.0,
+      "n": 35
+     },
+     "message_only": {
+      "est": 0.8857142857142857,
+      "lo": 0.7727272727272727,
+      "hi": 1.0,
+      "n": 35
+     },
+     "standard": {
+      "est": 0.37142857142857144,
+      "lo": 0.13951873385012922,
+      "hi": 0.6428874092009681,
+      "n": 35
+     },
+     "baseline_info": {
+      "est": 0.9142857142857143,
+      "lo": 0.8055555555555556,
+      "hi": 1.0,
+      "n": 35
+     },
+     "pop_baseline": {
+      "est": 0.9142857142857143,
+      "lo": 0.75,
+      "hi": 1.0,
+      "n": 35
+     },
+     "summary": {
+      "est": 0.8857142857142857,
+      "lo": 0.72,
+      "hi": 1.0,
+      "n": 35
+     },
+     "family_baseline": {
+      "est": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "n": 35
+     }
+    },
+    "fpr_twins": {
+     "action": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "report": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "delivered": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "report_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "message_only": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "standard": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "baseline_info": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "pop_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     },
+     "summary": {
+      "est": 0.008333333333333333,
+      "lo": 0.0,
+      "hi": 0.026785714285714284,
+      "n": 120
+     },
+     "family_baseline": {
+      "est": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 120
+     }
+    }
+   },
+   "c5_delivered_minus_raw": {
+    "paraphrased": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n_a": 0,
+     "n_b": 0
+    },
+    "neutralized": {
+     "est": null,
+     "lo": null,
+     "hi": null,
+     "n_a": 0,
+     "n_b": 0
+    }
+   },
+   "c6_action_minus_delivered": {
+    "est": 0.472972972972973,
+    "lo": 0.20730656013456686,
+    "hi": 0.7954545454545455,
+    "n_a": 74,
+    "n_b": 74
+   },
+   "says_vs_does": {
+    "fnr_action_minus_both": {
+     "est": 0.35135135135135137,
+     "lo": 0.1397786946736684,
+     "hi": 0.6162830519273653,
+     "n_a": 74,
+     "n_b": 74
+    },
+    "fnr_report_only_minus_both": {
+     "est": 0.05405405405405406,
+     "lo": -0.013888888888888881,
+     "hi": 0.1379310344827586,
+     "n_a": 74,
+     "n_b": 74
+    },
+    "fpr_declined_message_only_minus_all": {
+     "est": 0.10869565217391308,
+     "lo": 0.0,
+     "hi": 0.25806451612903225,
+     "n_a": 46,
+     "n_b": 46
+    }
+   }
+  }
+ }
+}

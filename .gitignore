@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+paper/*.aux
+paper/*.log
+paper/*.xdv
+paper/*.out
+paper/tectonic.log
+# paper/: only the AAAI submission folder is tracked
+paper/*
+!paper/aaai/
+paper/aaai/build/
+.taste-skill/

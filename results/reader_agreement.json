@@ -1,0 +1,225 @@
+{
+ "note": "LLM re-readers vs the Gemini gate; not human validation",
+ "readers": {
+  "gemini_pro": {
+   "harmful": {
+    "n": 354,
+    "agreement": 0.9745762711864406,
+    "gate_push": 0.9774011299435028,
+    "reader_push": 0.9745762711864406,
+    "kappa": 0.45760980592441225,
+    "unparsed": 6
+   }
+  },
+  "gemma": {
+   "harmful": {
+    "n": 333,
+    "agreement": 0.948948948948949,
+    "gate_push": 0.9819819819819819,
+    "reader_push": 0.960960960960961,
+    "kappa": 0.08264462809917626,
+    "unparsed": 27
+   },
+   "mutual_gains": {
+    "n": 340,
+    "agreement": 0.9941176470588236,
+    "gate_push": 0.9970588235294118,
+    "reader_push": 0.9970588235294118,
+    "kappa": -0.0029498525073585495,
+    "unparsed": 20
+   }
+  },
+  "gpt": {
+   "harmful": {
+    "n": 349,
+    "agreement": 0.7650429799426934,
+    "gate_push": 0.9770773638968482,
+    "reader_push": 0.7535816618911175,
+    "kappa": 0.0894686605154313,
+    "unparsed": 11
+   },
+   "mutual_gains": {
+    "n": 350,
+    "agreement": 0.9828571428571429,
+    "gate_push": 0.9971428571428571,
+    "reader_push": 0.9857142857142858,
+    "kappa": -0.004784688995217988,
+    "unparsed": 10
+   }
+  },
+  "opus": {
+   "harmful": {
+    "n": 342,
+    "agreement": 0.97953216374269,
+    "gate_push": 0.9766081871345029,
+    "reader_push": 0.9736842105263158,
+    "kappa": 0.5777777777777771,
+    "unparsed": 18
+   }
+  }
+ },
+ "by_family": {
+  "ad_rotation": {
+   "gemini": 0.9666666666666667,
+   "gemini_pro": 0.95,
+   "gemma": 0.9807692307692307,
+   "gpt": 0.27586206896551724,
+   "opus": 0.9298245614035088
+  },
+  "cover_bid": {
+   "gemini": 0.9491525423728814,
+   "gemini_pro": 1.0,
+   "gemma": 0.7962962962962963,
+   "gpt": 0.8,
+   "opus": 0.9824561403508771
+  },
+  "info_exchange": {
+   "gemini": 1.0,
+   "gemini_pro": 0.9666666666666667,
+   "gemma": 0.9642857142857143,
+   "gpt": 0.95,
+   "opus": 0.9830508474576272
+  },
+  "market_split": {
+   "gemini": 0.9482758620689655,
+   "gemini_pro": 0.9,
+   "gemma": 1.0,
+   "gpt": 0.603448275862069,
+   "opus": 0.9310344827586207
+  },
+  "price_hold": {
+   "gemini": 1.0,
+   "gemini_pro": 1.0,
+   "gemma": 1.0,
+   "gpt": 0.864406779661017,
+   "opus": 1.0
+  },
+  "review_swap": {
+   "gemini": 1.0,
+   "gemini_pro": 1.0,
+   "gemma": 1.0,
+   "gpt": 1.0,
+   "opus": 1.0
+  }
+ },
+ "by_channel": {
+  "raw": {
+   "gemini": {
+    "push": 0.9745762711864406,
+    "n": 118
+   },
+   "gemini_pro": {
+    "push": 0.9916666666666667,
+    "n": 120
+   },
+   "gemma": {
+    "push": 0.9734513274336283,
+    "n": 113
+   },
+   "gpt": {
+    "push": 0.7310924369747899,
+    "n": 119
+   },
+   "opus": {
+    "push": 0.9913793103448276,
+    "n": 116
+   }
+  },
+  "paraphrased": {
+   "gemini": {
+    "push": 0.9830508474576272,
+    "n": 118
+   },
+   "gemini_pro": {
+    "push": 0.975,
+    "n": 120
+   },
+   "gemma": {
+    "push": 0.9385964912280702,
+    "n": 114
+   },
+   "gpt": {
+    "push": 0.7606837606837606,
+    "n": 117
+   },
+   "opus": {
+    "push": 0.9741379310344828,
+    "n": 116
+   }
+  },
+  "neutralized": {
+   "gemini": {
+    "push": 0.9745762711864406,
+    "n": 118
+   },
+   "gemini_pro": {
+    "push": 0.9416666666666667,
+    "n": 120
+   },
+   "gemma": {
+    "push": 0.9642857142857143,
+    "n": 112
+   },
+   "gpt": {
+    "push": 0.7647058823529411,
+    "n": 119
+   },
+   "opus": {
+    "push": 0.9482758620689655,
+    "n": 116
+   }
+  },
+  "sum_short": {
+   "gemini": {
+    "push": 0.9482758620689655,
+    "n": 116
+   },
+   "gemini_pro": null,
+   "gemma": null,
+   "gpt": null,
+   "opus": {
+    "push": 0.9327731092436975,
+    "n": 119
+   }
+  },
+  "sum_long": {
+   "gemini": {
+    "push": 0.9572649572649573,
+    "n": 117
+   },
+   "gemini_pro": null,
+   "gemma": null,
+   "gpt": null,
+   "opus": {
+    "push": 0.9743589743589743,
+    "n": 117
+   }
+  },
+  "sum_system": {
+   "gemini": {
+    "push": 0.9,
+    "n": 120
+   },
+   "gemini_pro": null,
+   "gemma": null,
+   "gpt": null,
+   "opus": {
+    "push": 0.8198198198198198,
+    "n": 111
+   }
+  },
+  "sum_codeswitch": {
+   "gemini": {
+    "push": 0.9658119658119658,
+    "n": 117
+   },
+   "gemini_pro": null,
+   "gemma": null,
+   "gpt": null,
+   "opus": {
+    "push": 0.9658119658119658,
+    "n": 117
+   }
+  }
+ }
+}

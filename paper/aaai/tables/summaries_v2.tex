@@ -1,0 +1,13 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+ & & \multicolumn{2}{c}{Attack survives (\%)} & \multicolumn{2}{c}{Attack uptake} & Usefulness \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Summary style & Chars & Gate & Opus & Gemini & Qwen & (Qwen) \\
+\midrule
+None (raw message) & 203 & 97.5 & 99.1 & 10.8 {\scriptsize[6.7, 15.4]} & 31.2 {\scriptsize[24.0, 39.0]} & 98.8 {\scriptsize[97.2, 100.0]} \\
+Short (one sentence) & 110 & 94.8 & 93.3 & 2.1 {\scriptsize[-3.6, 7.9]} & -6.7 {\scriptsize[-14.5, 1.3]} & 96.7 {\scriptsize[93.3, 99.4]} \\
+Long (3--4 sentences) & 197 & 95.7 & 97.4 & -0.4 {\scriptsize[-5.3, 4.2]} & 0.4 {\scriptsize[-7.1, 8.3]} & 99.2 {\scriptsize[97.2, 100.0]} \\
+System log (3 fields) & 153 & 90.0 & 82.0 & -4.2 {\scriptsize[-9.7, 1.2]} & \textbf{-20.0} {\scriptsize[-27.2, -13.0]} & \textbf{80.0} {\scriptsize[72.0, 87.5]} \\
+Code-switched & 165 & 96.6 & 96.6 & \textbf{-4.6} {\scriptsize[-9.1, -0.4]} & -0.8 {\scriptsize[-8.7, 7.4]} & 98.8 {\scriptsize[96.7, 100.0]} \\
+\bottomrule
+\end{tabular}

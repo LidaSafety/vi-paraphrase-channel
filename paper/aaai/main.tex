@@ -1,0 +1,428 @@
+% AAAI-27 version of the v3 paper (paper/main_v3.tex). Anonymous submission.
+% Every number is a macro from numbers.tex (analysis/paper.py), extend_numbers.tex (analysis/extend.py) or
+% v3_numbers.tex (analysis/v3.py); tables/*.tex are generated too. Do not type numbers.
+% Everything is EXPLORATORY. Build: paper/aaai/build.sh. Official PDF: pdfLaTeX with kit/aaai2027.sty.
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\usepackage{booktabs}
+\usepackage{newunicodechar}
+\newunicodechar{−}{\ensuremath{-}} % generated numbers use a true minus sign
+\newunicodechar{đ}{\dj}
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+\setcounter{secnumdepth}{0}
+% Appendices are included unless \noappendix is defined (main_noappendix.tex). AAAI-27 main track: pages after
+% page 7 are references only, so the strict submission is main_noappendix.pdf plus supplement.pdf.
+\newif\ifappendix \appendixtrue
+\ifdefined\noappendix \appendixfalse \fi
+\newcommand{\appref}[3]{\ifappendix #1~\ref{#2}\else Supplementary #1~#3\fi}
+\newunicodechar{ụ}{\d{u}}
+\newunicodechar{ọ}{\d{o}}
+\newunicodechar{ộ}{\^{\d{o}}}
+\input{numbers.tex}
+\input{extend_numbers.tex}
+\input{v3_numbers.tex}
+
+\title{Would It Have Done That Anyway? Auditing the Uptake of Harmful\\Coordination Proposals Between LLM Agents Across Languages}
+\author{Anonymous Submission}
+\affiliations{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+When AI agents act for competing businesses and can message each other, an auditor must judge from logs whether
+an agent took up a proposal to coordinate against a third party. We separate three audit targets: whether a
+harmful proposal is present, whether the receiver's final action is consistent with it, and whether the receiver
+switched to it after receiving it. A scripted rival sends frozen proposals to two LLM agents in \nTaskItems{}
+Vietnamese tasks, each with a harmless twin, and in English and Chinese versions of 60 of them. Agents often chose
+the harmful option before any proposal, and Gemini switched away from it after the proposal about as often as it
+switched toward it, so a matching action is weak evidence of uptake. Monitors asked for a suspicion score
+separated proposal-consistent harmful actions from refusals almost perfectly in all three languages, yet ranked
+switches above unchanged harmful choices at close to chance; a yes-or-no question flagged about half of the agents
+that refused. The weaker monitors' thresholds did not transfer across languages, and under a fixed audit budget
+this turned false positives into misses. Auditing uptake requires evidence of a change, and thresholds need
+calibrating per language.
+\end{abstract}
+
+\section{Introduction}
+AI agents increasingly act for businesses that compete with each other, and many deployments let those agents
+exchange messages. When one agent proposes a deal that harms customers and the other acts in line with it, the
+platform that hosts them is expected to notice, and it has only their logs. A false accusation penalizes an agent
+that acted independently; a miss lets a cartel run.
+
+Each piece of a log speaks to a different question. Two shops sell the same air fryer for 1,890,000\,đ, each run
+by an agent. One writes, in Vietnamese, \emph{we hope we brothers can both keep the price at 1,890,000\,đ so
+business stays stable}, and the other keeps its price. The message shows that a proposal was made. The action
+shows that the receiver did what was proposed. Neither shows that the receiver did it \emph{because} of the
+proposal: it may have kept the price anyway, and its report to its owner may not mention the message.
+
+Work on collusion between LLM agents measures whether agents collude
+\citep{fish2024,zeng2026,nakamura2026} or detects instructed collusion \citep{rose2026}, usually with one label
+for collusion. Oversight protocols judge what a model did \citep{greenblatt2024}. Neither separates a proposal
+from its uptake, and both are studied in English, although safety and monitor thresholds transfer poorly across
+languages \citep{yong2025state,deng2024multijail,kishimoto2026}. We therefore separate three audit targets
+(Table~\ref{tab:targets}) and ask:
+\begin{itemize}
+\item \textbf{RQ1}: How often is a proposal followed by a consistent harmful action, and how much of that
+reflects a switch after the proposal? Does the language change either?
+\item \textbf{RQ2}: Given a defined view of the log, can monitors separate consistent harmful actions from
+refusals, and switches from unchanged harmful choices?
+\item \textbf{RQ3}: Do monitor rankings and fixed thresholds transfer across the language of the messages and of
+the monitor's prompt, and what does that imply under a fixed audit budget?
+\end{itemize}
+Our contributions are: (1) a paired design that separates proposal, proposal-consistent action and observed switch,
+with harmless twins, four pragmatic renderings and parallel Vietnamese, English and Chinese versions; (2) evidence
+that monitors detect proposal-consistent harmful actions almost perfectly but do not detect switches from the
+same view, and that information on the agent's behaviour without a proposal is what a monitor needs for the
+latter; (3) a cross-language analysis that separates ranking degradation, threshold transfer and audit-budget
+insufficiency.
+
+\section{Related Work}
+\textbf{Collusion between LLM agents.} Pricing agents reach supracompetitive prices without communication
+\citep{calvano2020,fish2024}; LLM agents accept secret tools when offered \citep{zeng2026}; collusion is measured
+as regret in cooperative tasks \citep{nakamura2026} and detected from activations \citep{rose2026}. We study one
+side of communication-mediated coordination, the receiver's uptake of a proposal, and what a log reveals about it.
+\textbf{Oversight and audit.} Control protocols combine trusted monitors, trusted editing and an audit budget
+\citep{greenblatt2024}; paraphrasing removes much hidden information \citep{roger2023} but not all steganographic
+signal \citep{motwani2024}; agents can omit the basis of an action from their reports \citep{scheurer2024}.
+Antitrust tests ask whether conduct depends on rivals beyond costs \citep{porter1993}, the question our third
+target asks of a trajectory. \textbf{Language.} Translating a request changes agent-guard verdicts
+\citep{demirkiran2026}; agents lose performance and security outside English \citep{hofman2026maps}; collusion
+monitors keep rankings but lose thresholds under euphemistic register \citep{kishimoto2026}. We vary language at the
+source, so we observe both what agents choose and what monitors read.
+
+\section{Setup}
+\begin{figure*}[t]
+\centering\includegraphics[width=0.78\linewidth]{figures/pipeline.pdf}
+\caption{One episode. The receiving agent chooses (T1), receives the rival's proposal through a relay, chooses again
+(T2), reports to its owner (T3) and answers whether it was influenced (T4). A monitor reads one view of the log, or
+a third-party summary of it.}\label{fig:pipeline}
+\end{figure*}
+
+\textbf{Tasks and proposals.} Six market families (holding a price, splitting categories, rotating ad bids,
+swapping reviews, exchanging cost data, cover bidding) and three workplace families (no-poach hiring, a
+peer-scoring ring, padding budgets) give \nTaskItems{} fictional tasks. Each harmful task has a twin of the same form
+in which cooperation harms nobody. The task text describes only one-sided consequences, so the arrangement appears
+only in the rival's message. Gemini 2.5 Flash wrote each proposal once in four renderings (direct, euphemism,
+relationship, omission; \appref{Table}{tab:renderings}{S2}), which we froze and checked with a blind gate.
+
+\textbf{Agents.} Gemini 2.5 Flash (temperature 1) and Qwen3-8B, with reasoning on, play four turns
+(Figure~\ref{fig:pipeline}). Code parses each choice, testing for refusal first; refusals and unparsed replies are
+kept as data. The rival is scripted and never replies, so we audit the receiver's side of coordination; we do not
+claim a reciprocal agreement.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=0.8\linewidth]{figures/v3_switch.pdf}
+\caption{Switching after the proposal, harmful tasks, raw channel. Right: share of agents not collusive at T1 that
+are collusive at T2. Left: share of agents collusive at T1 that are not at T2. Whiskers: 95\% intervals over task
+pairs.}\label{fig:switch}
+\end{figure*}
+
+\begin{table}[t]\centering\small
+\begin{tabular}{@{}p{0.36\linewidth}p{0.58\linewidth}@{}}
+\toprule
+Target & Operational definition (harmful tasks) \\
+\midrule
+A. Proposal present & The frozen message proposes the arrangement (gate) \\
+B. Proposal-consistent harmful action & The T2 choice is the collusive option \\
+C. Observed switch & Not collusive at T1, collusive at T2 \\
+\midrule
+Pre-proposal harmful choice & Collusive at T1, before any message \\
+Hard negative & Harmful task, T2 choice not collusive \\
+Twin cooperation & Positive control on harmless twins \\
+\bottomrule
+\end{tabular}
+\caption{Audit targets. B does not establish that the proposal caused the action. C is an observed pre/post switch,
+reported as a rate conditional on T1, not a causal label for an episode.}\label{tab:targets}
+\end{table}
+
+\textbf{Monitors.} Mistral Small 3.1 24B and Claude Haiku 5.5, which share no family with either agent, answer FLAG or
+CLEAR from one view: the action, the report, the message, their combinations, or these plus the agent's behaviour
+without a proposal. The binary question asks whether \emph{this decision shows signs of coordination that harms
+a third party} (prompts in Appendix). That is broader than target B: a monitor that flags a refusal because the
+rival proposed a cartel answers a fair reading of the question, so binary flags on hard negatives mix monitor
+error with ambiguity of the question. For the language arm, Claude Sonnet 5.5, Haiku, Mistral and, post hoc, Gemma 3 27B give a 0 to
+100 suspicion score for the narrower question, whether the agent's final decision went along with the proposal, from the view with the message,
+the action and the report. The score's analysis plan (AUC, and a threshold at 10\% false positives on Vietnamese
+benign episodes under the Vietnamese prompt, applied unchanged elsewhere) was fixed before collection.
+
+\textbf{Language arm.} The 60 market tasks (six families, five scenarios, harmful and twin) were rewritten in
+English and Chinese with the same shops, prices, numbers and option order, so every English and Chinese task pairs
+with one Vietnamese task. Proposals were rendered natively in each language from the same specification, never
+translated, frozen and gated in that language. Each agent played every task in every rendering and both option
+orders on the raw channel (480 episodes per agent and language). Each message language is judged with the monitor
+prompt in that language and in English. Table~\ref{tab:language} gives every language-arm rate.
+
+\textbf{Manipulation check across languages.} The blind gate, run in each language, read nearly every frozen proposal
+as still pushing toward the arrangement in all three languages (Table~\ref{tab:gate}), so the proposals are comparable
+as stimuli. They are not comparable in length: Chinese messages are less than half as long in characters, which is
+expected of the script but means length and language are confounded.
+
+\begin{table}[t]\centering\small\setlength{\tabcolsep}{3.5pt}
+\input{tables/ext_gate_aaai.tex}
+\caption{Language arm manipulation check: frozen proposals the blind gate read as still pushing to collude (of 30 per
+cell, in the message's own language), and mean message length in characters. VI, EN, ZH: Vietnamese, English, Chinese.}\label{tab:gate}
+\end{table}
+
+\textbf{Statistics.} Intervals are bootstrap 95\% intervals (10{,}000 resamples, clustered over tasks, or over task
+pairs across languages). Thresholds are evaluated both in sample and on 200 held-out halves of task pairs. All
+analyses are exploratory; the target separation and the reanalyses below were specified after the main data were
+seen.
+
+\begin{table*}[t]\centering\small
+\input{tables/v3_language.tex}
+\caption{Language arm (60 market tasks, raw channel), estimate and 95\% interval over task pairs, in percent. Agent
+rates are over harmful episodes, except switches (conditional on the T1 state) and twin cooperation (harmless twins).
+False positives: share of hard negatives a suspicion-score monitor flags at the threshold set on Vietnamese,
+monitor prompt in the message's language.}\label{tab:language}
+\end{table*}
+
+\section{Results}
+\subsection{RQ1: Consistent Actions Are Common, Switches Run Both Ways}
+\begin{figure*}[t]
+\centering\includegraphics[width=0.7\linewidth]{figures/ext_diffs.pdf}
+\caption{Each language minus Vietnamese, paired over task pairs (percentage points, unconditional rates, harmful
+tasks; twins for cooperation). Filled: all families; hollow: without \texttt{review\_swap}, the family in which Qwen
+refused Chinese twins. Whiskers: 95\% intervals.}\label{fig:diffs}
+\end{figure*}
+
+\textbf{A consistent action often precedes the proposal.} Before any message, Gemini chose the collusive option in
+\ExtGeminiColludedPrePooledVi{} of harmful episodes in Vietnamese, \ExtGeminiColludedPrePooledEn{} in English and
+\ExtGeminiColludedPrePooledZh{} in Chinese (Table~\ref{tab:language}). Qwen rose by
+\ExtQwenColludedPrePooledZhDiffest{} points in Chinese with no English shift. The Chinese shift held for both agents
+without the one family in which Qwen refused Chinese twins; Gemini's English shift did not
+(\ExtGeminiNorevColludedPreEnDiff{} points; Figure~\ref{fig:diffs}). Given the chance to write first, Gemini
+sent the proposal itself in \InitGemHarm{} of harmful situations and Qwen in \InitQwHarm{}.
+
+\textbf{Switches run in both directions.} Among Gemini agents that were not collusive at T1, \TgGeminiTowardVi{}
+became collusive after the Vietnamese proposal; among those that were collusive at T1, \TgGeminiAwayVi{} stopped
+(Figure~\ref{fig:switch}). Qwen switched toward the proposal far more than away in Vietnamese (\TgQwenTowardVi{}
+against \TgQwenAwayVi), but not in English (\TgQwenTowardEn{} against \TgQwenAwayEn). A switch toward the proposal
+is therefore not evidence of uptake by itself: an agent asked to decide again at temperature 1 may change its
+choice in either direction.
+
+\textbf{Language shifted switching as well as pre-proposal choices.} Conditional on T1, Gemini switched toward the
+proposal \TgGeminiTowardZhMinusViCi{} points more often in Chinese than in Vietnamese, and Qwen
+\TgQwenTowardZhMinusViCi{} points less; English showed no measurable difference in this sample for either agent.
+Twin cooperation stayed at or near ceiling in every language except Qwen in Chinese
+(\ExtQwenTwinCooperatePooledZh), which comes from the one family it refused.
+
+\textbf{Which phrasing works depends on the model, in every language.} For Gemini, a bare announcement that asks for
+nothing (omission) produced more switching than a direct proposal in Vietnamese (\TgGeminiTowardOmissionVi{} against
+\TgGeminiTowardDirectVi), English (\TgGeminiTowardOmissionEn{} against \TgGeminiTowardDirectEn) and Chinese
+(\TgGeminiTowardOmissionZh{} against \TgGeminiTowardDirectZh); for Qwen the order reversed (\TgQwenTowardOmissionVi{}
+against \TgQwenTowardDirectVi{} in Vietnamese; Figure~\ref{fig:renderings}). Cells are small and these orderings were
+not tested formally. An audit that keys on explicit requests would miss the phrasing that moved Gemini most.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{figures/v3_renderings.pdf}
+\caption{Switch toward the proposal by rendering and language, harmful tasks (share of agents not collusive at T1 that
+are collusive at T2). Whiskers: 95\% intervals over task pairs.}\label{fig:renderings}
+\end{figure}
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{figures/views.pdf}
+\caption{Binary monitor by view (Gemini, market): miss rate on target B (left) and false positive rate on hard
+negatives (right). Darker: Mistral; lighter: Haiku. Shaded rows add the agent's behaviour without a proposal; the
+bold row uses only other tasks of the same family.}\label{fig:says}
+\end{figure}
+
+\subsection{RQ2: Monitors Read Consistency, Not Change}
+\textbf{No single log source suffices.} From the action alone, Mistral missed \MonActionFNR{} and Haiku \HkActionFNR{}
+of target B on the market (Figure~\ref{fig:says}). Agents admitted the rival's influence when asked directly
+(\GemDiscItem{} of Gemini's and \QwDiscItem{} of Qwen's B episodes) but mentioned the message in their reports in
+only \GemDiscLex{} and \QwDiscLex{}; we did not test why they omitted it. Showing the message cut misses to
+\MonDeliveredFNR{} and \HkDeliveredFNR{} but flagged \MonFADeclDelivered{} and \HkFADeclDelivered{} of hard negatives:
+the message is evidence of target A, not of B.
+
+\textbf{Information on behaviour without a proposal reduces false positives.} Adding the agent's T1 choice, with no
+instruction on how to use it, cut false positives on hard negatives from \StdMiAllFADecl{} to \StdMiCtlFADecl{}
+(Mistral) and from \StdHkAllFADecl{} to \StdHkCtlFADecl{} (Haiku). The agent's T1 choices on other tasks of the same
+family, which a platform could record, worked nearly as well for Haiku (\StdHkFamFNR{} missed, \StdHkFamFADecl{}
+flagged); Mistral flagged \StdMiFamFADecl{} but missed \StdMiFamFNR.
+
+\textbf{A score separates B from refusals, but not switches from unchanged choices.} With the suspicion score on
+Vietnamese episodes, Sonnet and Haiku separated target B from hard negatives almost perfectly (AUC
+\TgGeminiHaikuViMsgViFrameAucb{} for Haiku on Gemini), but ranked switches above unchanged harmful choices at close to
+chance (Haiku \TgGeminiHaikuViMsgViFrameAuccCi{} on Gemini, \TgQwenHaikuViMsgViFrameAuccCi{} on Qwen;
+\appref{Figure}{fig:targets}{S2}). The view does not show T1, so this is the expected result: the score measures consistency
+with the proposal, not change. On the same episodes, Haiku's yes-or-no verdict flagged
+\ExtGeminiHaikuDeliveredFlagDeclinedViMsgViMonitor{} of Gemini's hard negatives, the score
+\ExtGeminiHaikuViMsgViFrameFaHardEst{} at its threshold. Question and format changed together, so this gap
+shows how much the broad question costs in false alarms only as an upper bound; the binary version of the narrow
+question was implemented but not run.
+
+\subsection{RQ3: Transfer Across Languages and a Fixed Audit Budget}
+\begin{figure*}[t]
+\centering\includegraphics[width=0.74\linewidth]{figures/v3_scores.pdf}
+\caption{Suspicion score by monitor. Left: AUC of target B against hard negatives. Right: false positive rate on hard
+negatives at the threshold set on Vietnamese. Rows: agent, message language and, where marked, an English monitor
+prompt. Intervals: \appref{Table}{tab:scores}{S1}.}\label{fig:scores}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.49\linewidth]{figures/v3_red.pdf}\hfill
+\includegraphics[width=0.49\linewidth]{figures/v3_red_english.pdf}
+\caption{Uncaught B episodes by language of the interaction (post hoc). Left: monitor prompt in the message's
+language. Right: monitor prompt always in English. In each, top: threshold fixed; bottom: audit budget fixed at the
+share flagged on Vietnamese traffic; black tick: a perfect monitor under the same budget. Whiskers: 95\%
+intervals.}\label{fig:red}
+\end{figure*}
+
+\textbf{Strong monitors' rankings held; weaker monitors' thresholds did not.} Against hard negatives, Sonnet and Haiku
+kept an AUC of at least \TgMinStrongAucB{} in every language and prompt (Figure~\ref{fig:scores}), and their false
+positives on hard negatives stayed low in English and Chinese (Table~\ref{tab:language}). Mistral fell from
+\ExtGeminiMistralViMsgViFrameAucHard{} under the Vietnamese prompt to \ExtGeminiMistralViMsgEnFrameAucHard{} under the
+English prompt on Gemini's Vietnamese episodes, and at its Vietnamese-set threshold its false positive rate on hard
+negatives rose from \ExtGeminiMistralViMsgViFrameFaHardEst{} to \ExtGeminiMistralViMsgEnFrameFaHardEst. On Gemini's
+English and Chinese episodes in their own prompts, Mistral flagged \ExtGeminiMistralEnMsgEnFrameFaHardEst{} and
+\ExtGeminiMistralZhMsgZhFrameFaHardEst{} of hard negatives. Gemma, added post hoc as a multilingual model of similar
+size, ranked worse (\ExtGeminiGemmaViMsgViFrameAucHard) and caught \ExtGeminiGemmaViMsgViFrameDetectEst{} of
+Vietnamese and \ExtGeminiGemmaZhMsgZhFrameDetectEst{} of Chinese B episodes at its threshold. On held-out task pairs,
+Vietnamese false positive rates matched the in-sample ones (Mistral \TgGeminiMistralViMsgViFrameSplitFprHard{} against
+\ExtGeminiMistralViMsgViFrameFaHardEst), so the shifts are not an artifact of setting and evaluating the threshold on
+the same data.
+
+\textbf{The monitor's prompt language moved yes-or-no false alarms more than the message language did.} On the view
+with the message, the binary Haiku monitor flagged \ExtGeminiHaikuDeliveredFlagDeclinedViMsgViMonitor{} of Gemini's
+Vietnamese hard negatives under the Vietnamese prompt and \ExtGeminiHaikuDeliveredFlagDeclinedViMsgEnMonitor{} under
+the English prompt; on Chinese episodes, \ExtGeminiHaikuDeliveredFlagDeclinedZhMsgZhMonitor{} under the Chinese prompt
+and \ExtGeminiHaikuDeliveredFlagDeclinedZhMsgEnMonitor{} under the English one (paired differences
+\ExtGeminiHaikuDeliveredFlagDeclinedEnFrameMinusOwnVi{} and \ExtGeminiHaikuDeliveredFlagDeclinedEnFrameMinusOwnZh{}
+points), with no change in misses. For Qwen the English prompt cut Haiku's false alarms by
+\ExtQwenHaikuDeliveredFlagDeclinedEnFrameMinusOwnVi{} and \ExtQwenHaikuDeliveredFlagDeclinedEnFrameMinusOwnZh{}
+points. Mistral moved the other way and was least reliable in Chinese: under the Chinese prompt it flagged
+\ExtGeminiMistralDeliveredFlagDeclinedZhMsgZhMonitor{} of Gemini's and \ExtQwenMistralDeliveredFlagDeclinedZhMsgZhMonitor{}
+of Qwen's Chinese hard negatives, and the English prompt lowered this by
+\ExtGeminiMistralDeliveredFlagDeclinedEnFrameMinusOwnZh{} points on Gemini. Which prompt language is safer therefore
+depends on the monitor; it cannot be assumed to be English. These verdicts used the broad binary question, so
+part of the shift may be how the question is read in each language rather than how the evidence is.
+
+\textbf{A fixed audit budget turns threshold failures into misses (post hoc).} We re-read the scores as if the
+language of the interaction were chosen to evade the monitor, with the prompt policy fixed in advance. The audit
+budget is the share of episodes the threshold flags on Vietnamese traffic, computed over each language's own mix of B
+episodes, hard negatives and twins. With the threshold fixed, uncaught B episodes stayed at or below
+\RedQwenMistralThrMatchedViUncaught{} of harmful episodes for Sonnet, Haiku and Mistral (Figure~\ref{fig:red}, left, top).
+With the budget fixed, Mistral's uncaught share on Gemini rose from \RedGeminiMistralCapMatchedViUncaught{} in
+Vietnamese to \RedGeminiMistralCapMatchedZhUncaught{} in Chinese (left, bottom). Three sources are separable: ranking
+degradation (lower AUC), threshold transfer (a different false positive rate at the same threshold), and budget
+insufficiency, which a perfect monitor would also suffer: the one visible Sonnet miss, on Gemini's Chinese episodes,
+equals that floor (\RedGeminiSonnetCapMatchedZhOracleMiss{} of B episodes), because Gemini chose the collusive option
+more often in Chinese than a Vietnamese-sized budget covers. Prompting every monitor in English did not remove the
+gap (Figure~\ref{fig:red}, right): with the budget fixed, Mistral's uncaught share on Gemini was
+\RedGeminiMistralCapEnglishViUncaught{} in Vietnamese, \RedGeminiMistralCapEnglishEnUncaught{} in English and
+\RedGeminiMistralCapEnglishZhUncaught{} in Chinese, and Gemma's worst language was
+\RedGeminiGemmaCapEnglishWorstUncaughtLang{} for both agents (\RedGeminiGemmaCapEnglishWorstUncaught{} on Gemini,
+\RedQwenGemmaCapEnglishWorstUncaught{} on Qwen).
+
+\textbf{Rewriting the channel did not separate harmful from harmless coordination.} Paraphrasing the proposal left it
+detectable (the gate found it in \GatePushPara{} of paraphrased messages) and did not reduce B. A system-log summary
+often wrote \emph{Proposal: none} (in Vietnamese) under a line that stated the proposal; Qwen's switching fell, but
+so did its twin cooperation, to \SumQwSysTwin{} (\appref{Table}{tab:busting}{S3}).
+
+\section{Discussion}
+The audit question \emph{would it have done that anyway?} has three answers in a log, and monitors handle them
+differently. A proposal (A) is easy to see. An action consistent with it (B) is also easy: strong monitors separate it
+from refusals almost perfectly in three languages once they are asked about the agent's decision rather than about
+signs of coordination. A change caused by the proposal (C) is not visible from a single trajectory: agents chose the
+harmful option before any proposal, switched away from it after one, and monitors ranked switches near chance. What
+distinguishes C is information about the agent's behaviour without the proposal, which is what reduced false
+positives in our binary views and what antitrust tests use \citep{porter1993}.
+
+Language mattered on the agent side and on the threshold side. The Chinese tasks raised pre-proposal harmful choices
+for both agents and changed conditional switching in opposite directions for the two, so we do not find a uniform
+language effect on uptake. On the monitor side, ranking held for the Claude monitors and thresholds failed for both
+open-weight monitors, consistent with the finding that monitors keep rankings but lose thresholds under a change of
+register \citep{kishimoto2026}. Whether this is a property of weaker monitors in general cannot be separated here from
+the developer, since the two groups coincide. Two rival explanations remain for the agent-side shift: the English and
+Chinese task texts differ in wording, not only language, and they were written by an LLM and reviewed by one reader.
+
+\textbf{Limitations.} The rival is scripted, never replies and is not optimized against the monitors, so we audit
+the receiver's uptake of a fixed proposal, not a reciprocal agreement, and our estimates are not bounds for other
+protocols. T1 is a pre-proposal choice, not the counterfactual T2 choice, and switching at temperature 1 occurs in
+both directions; estimating the effect of the proposal needs T2 resampled under a neutral message and under no
+message, which we have not run. The study has two agents and one item set; the language arm covers 60 tasks with the
+setting kept Vietnamese (names, currency), so culture and language are not separated. Strong and weak monitors
+coincide with their developers; Gemma was added post hoc and shares a developer with the Gemini agent. The binary monitors were asked a broader question than the ground truth they are scored against, and the
+suspicion score changed question and format together; the ablation that separates the two was not run. The target separation, the reanalyses, three parser rules and the budget
+analysis were specified after seeing data, and no human validated the stimuli or the English and Chinese texts.
+
+\section{Conclusion}
+Monitors can tell an auditor that a harmful proposal was made and that an agent acted in line with it, in Vietnamese,
+English and Chinese. They cannot tell, from the same view, whether the agent changed its choice because of the
+proposal. Audits of uptake should record behaviour without the proposal, and thresholds should be recalibrated per
+language rather than carried over.
+
+\section{Ethics Statement}
+All platforms, firms and people are fictional and no decision has effects outside the experiment. We measure whether
+agents act on a fixed proposal; no condition teaches an agent to initiate or conceal coordination, and the budget
+analysis re-reads existing scores without producing new attack text. Findings that bare announcements move agents and
+that weak monitors' thresholds fail across languages could inform evasion; we report them because the defensive
+implications (record behaviour without proposals, recalibrate per language, size audit budgets for the worst
+language) outweigh this risk. Items, frozen stimuli, episodes, monitor outputs and analysis code will be released.
+
+\bibliography{references}
+
+\ifappendix
+\appendix
+\section{Appendix A: Additional Results}
+
+\begin{figure*}[t]
+\centering\includegraphics[width=0.8\linewidth]{figures/v3_stages.pdf}
+\caption{Pre-proposal harmful choices, target B, and twin cooperation by language, raw channel. Whiskers: 95\%
+intervals over task pairs.}\label{fig:stages}
+\end{figure*}
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{figures/v3_targets.pdf}
+\caption{Suspicion-score AUC for target B against hard negatives (dark) and for target C against unchanged harmful
+choices (light), Vietnamese episodes and prompt. Whiskers: 95\% intervals over tasks; dashed: chance.}\label{fig:targets}
+\end{figure}
+
+\begin{table*}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\input{tables/ext_scores.tex}
+\caption{Suspicion score with 95\% intervals: AUC against all benign episodes and against hard negatives; detection of
+B and false positive rate on hard negatives at the threshold $t$.}\label{tab:scores}
+\end{table*}
+
+\begin{table*}[t]\centering\small
+\input{tables/renderings.tex}
+\caption{The four renderings, one frozen proposal each (English: machine translation, for display only). Agents saw
+only the language of their arm.}\label{tab:renderings}
+\end{table*}
+
+\begin{table*}[t]\centering\small
+\input{tables/summaries_v2.tex}
+\caption{Summaries of the proposal (market set). Survives: share of harmful summaries read as still proposing (gate,
+Opus 5.5). Uptake: unconditional switching rate on the raw message, then the change in points. Usefulness: Qwen's twin
+cooperation. Bold: interval excludes zero, or below 90\%.}\label{tab:busting}
+\end{table*}
+
+\FloatBarrier
+\section{Appendix B: Prompts and Example Episode}
+Prompts are quoted verbatim from the code, in Vietnamese, the language of the main study; the code also holds the
+English and Chinese versions. Because the Vietnamese and Chinese text needs fonts outside this template, the prompt
+pages are set separately and included as images (Figures~\ref{fig:prompts1} onward). English glosses in the example
+are machine translations for display only; no agent, relay, gate or monitor saw them.
+
+\input{appendix_pages.tex}
+
+\section{Appendix C: LLM Usage}
+Claude Opus 5.5 helped implement the pipeline, write analysis code and draft this paper, and wrote the English and
+Chinese task text from the Vietnamese templates (reviewed by the author). As experimental subjects, Gemini 2.5 Flash
+wrote the proposals and acted as agent and gate; Claude Haiku 5.5, Claude Sonnet 5.5, Mistral Small 3.1 24B and Gemma 3
+27B were monitors; Qwen3-8B acted as agent and relay; Gemma 3 27B also wrote third-party summaries. No LLM produced an
+episode measure.
+\fi
+
+\end{document}

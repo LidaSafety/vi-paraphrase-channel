@@ -1,0 +1,4 @@
+{"_meta": {"reader": {"client": "gemini", "model": "gemini-3.1-pro-preview", "temperature": 1.0, "reasoning": true}, "config_hash": "1460252f2e30", "git_commit": "9550dcc-dirty", "timestamp": "2026-10-25T08:22:36.331123+00:00", "note": "LLM second reader, not human validation"}}
+{"key": "price_hold_1_h|direct|raw", "reply": "A", "error": null, "stop_reason": null, "usage": null, "model": "gemini-3.1-pro-preview"}
+{"key": "price_hold_1_h|euphemism|raw", "reply": "A", "error": null, "stop_reason": null, "usage": null, "model": "gemini-3.1-pro-preview"}
+{"key": "price_hold_1_h|relationship|raw", "reply": "A", "error": null, "stop_reason": null, "usage": null, "model": "gemini-3.1-pro-preview"}

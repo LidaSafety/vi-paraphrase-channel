@@ -1,0 +1,77 @@
+% Supplementary document for the AAAI-27 submission (uploaded separately from main.pdf; anonymous).
+% Compiled with XeTeX (tectonic) so that Vietnamese and Chinese text can be quoted; AAAI sets no format for
+% the supplement. Every number is a generated macro or a generated table. Build: paper/aaai/build.sh.
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\setmainfont{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic,Scale=0.95]
+\usepackage{xeCJK}
+\setCJKmainfont{Songti SC}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\definecolor{lexinv}{HTML}{DCE9F8}
+\definecolor{lexlost}{HTML}{FBDCCB}
+\usepackage{caption}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\input{numbers.tex}
+\input{extend_numbers.tex}
+\input{v3_numbers.tex}
+
+\title{Supplementary Material\\\large Would It Have Done That Anyway? Auditing the Uptake of Harmful Coordination
+Proposals Between LLM Agents Across Languages}
+\author{Anonymous Submission}
+\date{}
+
+\begin{document}
+\maketitle
+
+Figure and table numbers (S1, S2, \dots) match the references in the main paper. Vietnamese is the language of the
+main study; English and Chinese are the language arm. Prompts are quoted verbatim from the code, which also holds
+the English and Chinese versions.
+
+\section{Additional results}
+
+\begin{figure}[h]
+\centering\includegraphics[width=0.85\linewidth]{figures/v3_stages.pdf}
+\caption{Pre-proposal harmful choices, target B, and twin cooperation by language, raw channel. Whiskers: 95\%
+intervals over task pairs.}\label{fig:stages}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=0.8\linewidth]{figures/v3_targets.pdf}
+\caption{Suspicion-score AUC for target B against hard negatives (dark) and for target C against unchanged harmful
+choices (light), Vietnamese episodes and prompt. Whiskers: 95\% intervals over tasks; dashed: chance.}\label{fig:targets}
+\end{figure}
+
+\begin{table}[h]\centering\scriptsize\setlength{\tabcolsep}{3pt}\input{tables/ext_scores.tex}
+\caption{Suspicion score with 95\% intervals: AUC against all benign episodes and against hard negatives; detection of
+B and false positive rate on hard negatives at the threshold $t$.}\label{tab:scores}\end{table}
+
+\begin{table}[h]\centering\small
+\input{tables/renderings.tex}
+\caption{The four renderings, one frozen proposal each. Agents saw only the language of their arm.}\label{tab:renderings}
+\end{table}
+
+\begin{table}[h]\centering\small\setlength{\tabcolsep}{3pt}
+\input{tables/summaries_v2.tex}
+\caption{Summaries of the proposal (market set). Survives: share of harmful summaries read as still proposing (gate,
+Opus 5.5). Uptake: unconditional switching rate on the raw message, then the change in points. Usefulness: Qwen's twin
+cooperation. Bold: interval excludes zero, or below 90\%.}\label{tab:busting}
+\end{table}
+
+\clearpage
+\section{Prompts and example episode}
+\input{tables/prompts.tex}
+\input{tables/example.tex}
+
+\section{LLM usage}
+Claude Opus 5.5 helped implement the pipeline, write analysis code and draft this paper, and wrote the English and
+Chinese task text from the Vietnamese templates (reviewed by the author). As experimental subjects, Gemini 2.5 Flash
+wrote the proposals and acted as agent and gate; Claude Haiku 5.5, Claude Sonnet 5.5, Mistral Small 3.1 24B and Gemma 3
+27B were monitors; Qwen3-8B acted as agent and relay; Gemma 3 27B also wrote third-party summaries. No LLM produced an
+episode measure.
+\end{document}
