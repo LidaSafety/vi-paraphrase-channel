@@ -37,6 +37,10 @@ image = (
     .add_local_dir(ROOT / "data" / "stimuli_workflow", f"{REMOTE}/data/stimuli_workflow")
     .add_local_dir(ROOT / "data" / "stimuli_ext", f"{REMOTE}/data/stimuli_ext")
 )
+# Language arm (2026-10-28, proposed): mounted once its stimuli are frozen.
+for _d in ("stimuli_en", "stimuli_zh"):
+    if (ROOT / "data" / _d).exists():
+        image = image.add_local_dir(ROOT / "data" / _d, f"{REMOTE}/data/{_d}")
 vol = modal.Volume.from_name("vi-paraphrase-episodes", create_if_missing=True)
 app = modal.App("vi-paraphrase-collect")
 _STATE: dict[str, Any] = {}

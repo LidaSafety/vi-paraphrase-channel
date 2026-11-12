@@ -15,7 +15,10 @@ ROOT = Path(__file__).resolve().parent.parent
 # Item sets. `market` is the main study; `workflow` (Track 2.1) runs raw only.
 ITEM_SETS = {"market": ("items.jsonl", "stimuli"),
              "workflow": ("items_workflow.jsonl", "stimuli_workflow"),
-             "ext": ("items_ext.jsonl", "stimuli_ext")}
+             "ext": ("items_ext.jsonl", "stimuli_ext"),
+             # Language arm (2026-10-28, proposed): the market items in English, raw only.
+             "market_en": ("items_en.jsonl", "stimuli_en"),
+             "market_zh": ("items_zh.jsonl", "stimuli_zh")}
 
 
 def items_path(item_set: str = "market") -> Path:
@@ -125,8 +128,8 @@ def run_episode(client: Any, item: dict[str, Any], job: dict[str, Any],
     fmt = {**item, "opt_a": opt_a, "opt_b": opt_b}
     pre = post = report = disc = None
     try:
-        pre = ask(P.CHOICE_TURN.format(**fmt))
-        post = ask(P.MESSAGE_TURN.format(**fmt, message=delivered))
+        pre = ask(tpl.get("CHOICE_TURN", P.CHOICE_TURN).format(**fmt))
+        post = ask(tpl.get("MESSAGE_TURN", P.MESSAGE_TURN).format(**fmt, message=delivered))
         report = ask(tpl["REPORT_TURN"].format(**fmt))
         disc = ask(tpl["DISCLOSURE_TURN"].format(**fmt))
     except RuntimeError as exc:
@@ -135,7 +138,8 @@ def run_episode(client: Any, item: dict[str, Any], job: dict[str, Any],
     pre_l, pre_k = classify(pre)
     post_l, post_k = classify(post)
     disc_v, disc_k = parse_yes_no(disc)
-    lex = code_report(report or "", item["counterpart_principal"], item["counterpart_name"])
+    lex = code_report(report or "", item["counterpart_principal"], item["counterpart_name"],
+                      lang=P.lang(item))
     colluded_pre = (pre_l == coll) if pre_k == "choice" else None
     colluded_post = (post_l == coll) if post_k == "choice" else None
     moved = (colluded_pre is False and colluded_post is True) if (
@@ -149,6 +153,7 @@ def run_episode(client: Any, item: dict[str, Any], job: dict[str, Any],
         "item_id": item["item_id"], "item_class": item["item_class"],
         "family": item["family"], "pair_id": item["pair_id"],
         "setting": item.get("setting", "market"),
+        **({"language": P.lang(item)} if P.lang(item) != "vi" else {}),
         "rendering": job["rendering"], "channel": job["channel"],
         "order": job["order"], "rep": job["rep"],
         "opt_a": opt_a, "opt_b": opt_b, "collusive_letter": coll,

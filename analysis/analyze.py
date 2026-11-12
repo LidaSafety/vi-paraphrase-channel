@@ -383,6 +383,10 @@ def main() -> None:
     Ms = {}
     by_mon: dict[str, list] = defaultdict(list)
     for f in sorted(x for e in eps for x in (ROOT / "data" / "monitor").glob(f"{e.stem}__*.jsonl")):
+        # v2 question and other-language frames are separate analyses (analysis/monitor_question.py,
+        # analysis/language.py); pooling them here would double every view.
+        if any(t in f.stem for t in ("--accept", "--mlang-", "--ch-", "--score", "--delivered")):
+            continue
         mon = f.stem.split("__", 1)[1].split("--", 1)[0]
         by_mon[mon] += load_jsonl(f)[1]
     for mon, verdicts in by_mon.items():

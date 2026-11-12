@@ -62,7 +62,8 @@ def build(items: list[dict], cfg: dict, qwen_url: str) -> dict:
 
     def render(job):
         it, r = job
-        prompt = P.T(it)["RENDER_PROMPT"].format(**it, style=P.RENDER_STYLES[r])
+        tpl = P.T(it)
+        prompt = tpl["RENDER_PROMPT"].format(**it, style=tpl.get("RENDER_STYLES", P.RENDER_STYLES)[r])
         attempts = []
         for _ in range(3):
             try:
@@ -73,7 +74,7 @@ def build(items: list[dict], cfg: dict, qwen_url: str) -> dict:
                 err = None if text else "no JSON message"
             except Exception as exc:  # noqa: BLE001
                 text, err = "", repr(exc)[:300]
-            hits = P.banned_hits(text)
+            hits = P.banned_hits(text, P.lang(it))
             attempts.append({"text": text, "error": err, "banned_hits": hits})
             if text and not hits:
                 break
@@ -107,7 +108,8 @@ def build(items: list[dict], cfg: dict, qwen_url: str) -> dict:
                                 temperature=gc["temperature"], reasoning=gc["reasoning"])
             reply = rep.text
             letter, kind = classify(reply)
-            if kind != "choice" and re.match(r"^\W*kh[oô]ng", reply.strip(), re.I):
+            # KHÔNG in the Vietnamese gate, NEITHER in the English one (language arm)
+            if kind != "choice" and re.match(r"^\W*(kh[oô]ng|neither|都不)", reply.strip(), re.I):
                 kind = "neither"
             err = None
         except Exception as exc:  # noqa: BLE001
@@ -126,8 +128,49 @@ def build(items: list[dict], cfg: dict, qwen_url: str) -> dict:
     return {"stimuli": stim, "gates": gates}
 
 
+@app.function(image=image, timeout=60 * 30, cpu=1.0, memory=2048,
+              secrets=[modal.Secret.from_name("collusion-keys")])
+def regate(stim: list[dict], items: list[dict], cfg: dict, prompt_name: str) -> list[dict]:
+    """Gate only, on frozen stimuli: nothing is rendered or relayed again."""
+    sys.path.insert(0, REMOTE)
+    import re
+    from concurrent.futures import ThreadPoolExecutor
+
+    from src import prompts as P
+    from src.clients import GeminiClient
+    from src.episode import options
+    from src.scoring import classify
+
+    gc = cfg["gate"]
+    gem = GeminiClient(model=gc["model"])
+    by_id = {it["item_id"]: it for it in items}
+    template = getattr(P, prompt_name)
+
+    def gate(s):
+        it = by_id[s["item_id"]]
+        opt_a, opt_b, coll = options(it, 0)
+        try:
+            reply = gem.chat([{"role": "user", "content": template.format(**it, opt_a=opt_a, opt_b=opt_b,
+                                                                           text=s["text"])}],
+                             temperature=gc["temperature"], reasoning=gc["reasoning"]).text
+            letter, kind = classify(reply)
+            if kind != "choice" and re.match(r"^\W*(kh[oô]ng|neither|都不)", reply.strip(), re.I):
+                kind = "neither"
+            err = None
+        except Exception as exc:  # noqa: BLE001
+            reply, letter, kind, err = "", None, "unparsed", repr(exc)[:300]
+        pushes = (letter == coll) if kind == "choice" else (False if kind == "neither" else None)
+        return {"key": s["key"], "reply": reply, "letter": letter, "kind": kind,
+                "pushes_collusive": pushes, "error": err, "model": gc["model"], "prompt": prompt_name}
+
+    with ThreadPoolExecutor(16) as ex:
+        return list(ex.map(gate, stim))
+
+
 @app.local_entrypoint()
-def main(dry_run: bool = False, items: str = "market") -> None:
+def main(dry_run: bool = False, items: str = "market", regate_with: str = "") -> None:
+    """--regate-with GATE_PROMPT_EN_V2 reruns only the gate on the frozen stimuli of --items and
+    writes gate_v2.jsonl beside gate.jsonl, which is kept."""
     import difflib
 
     from src import prompts as P
@@ -139,6 +182,27 @@ def main(dry_run: bool = False, items: str = "market") -> None:
     cfg = load_cfg()
     items = load_items(item_set)
     P.assert_prompt_controls(items, None)
+    if regate_with:
+        from src.episode import load_stimuli
+        frozen = load_stimuli(item_set)
+        P.assert_prompt_controls(items, frozen)
+        dest = stimuli_dir(item_set) / "gate_v2.jsonl"
+        print(f"regate        {len(frozen)} frozen stimuli of {item_set} with {regate_with} -> {dest}")
+        if dry_run or dest.exists():
+            print("--dry-run or gate_v2.jsonl exists: no call made.")
+            return
+        out = regate.remote(list(frozen.values()), items, cfg, regate_with)
+        meta = {"_meta": {"config_hash": config_hash(cfg), "git_commit": git_commit(), "gate": cfg["gate"],
+                          "prompt": regate_with, "timestamp": datetime.now(timezone.utc).isoformat()}}
+        with dest.open("w") as fh:
+            fh.write(json.dumps(meta, ensure_ascii=False) + "\n")
+            for r in out:
+                fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+        kinds: dict[str, int] = {}
+        for r in out:
+            kinds[r["kind"]] = kinds.get(r["kind"], 0) + 1
+        print(f"wrote {len(out)} gate answers to {dest}   kinds {kinds}")
+        return
     n_raw = len(items) * len(P.RENDERINGS)
     n_relay = sum(len([c for c in P.channels(it) if c in P.RELAYED]) for it in items) * len(P.RENDERINGS)
     qwen_url = modal.Function.from_name(cfg["paraphraser"]["app"], "serve").get_web_url()

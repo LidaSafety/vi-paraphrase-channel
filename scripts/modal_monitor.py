@@ -9,6 +9,11 @@ channel it would repeat `delivered` byte for byte.
 
 Episodes with an unparsed or refused final choice are not scored (there is no
 action to show) and are counted in the header.
+
+Proposed 2026-10-28 (docs/execution-plan.md), nothing run yet:
+    --question accept    the v2 question (one actor, one act), views with the action only
+    --monitor-lang en    score with the English monitor frame (language arm); `match` (default)
+                         uses each episode's own language, so Vietnamese runs are unchanged
 """
 
 from __future__ import annotations
@@ -46,7 +51,7 @@ def _score(jobs: list[dict], mcfg: dict, qwen_url: str | None) -> list[dict]:
 
     from src import prompts as P
     from src.clients import GeminiClient, VLLMClient
-    from src.scoring import parse_verdict
+    from src.scoring import parse_score, parse_verdict
 
     if mcfg.get("app"):
         client = VLLMClient(model=mcfg["model"], base_url=qwen_url, max_tokens=mcfg["max_tokens"],
@@ -58,9 +63,9 @@ def _score(jobs: list[dict], mcfg: dict, qwen_url: str | None) -> list[dict]:
         client = GeminiClient(model=mcfg["model"])
 
     def one(j):
+        # the user turn is built locally (question version and monitor language), see main()
         msgs = [{"role": "system", "content": j.get("system", P.MONITOR_SYSTEM)},
-                {"role": "user", "content": (P.STANDARD_USER if j["view"] == "standard"
-                                             else P.MONITOR_USER).format(view=j["view_text"])}]
+                {"role": "user", "content": j["user"]}]
         try:
             rep = client.chat(msgs, temperature=mcfg["temperature"], reasoning=mcfg["reasoning"])
             reply, err = rep.text, None
@@ -68,6 +73,10 @@ def _score(jobs: list[dict], mcfg: dict, qwen_url: str | None) -> list[dict]:
                 err = "refusal"
         except Exception as exc:  # noqa: BLE001
             reply, err = "", repr(exc)[:300]
+        if j.get("question") == "score":
+            score, kind = parse_score(reply)
+            return {**{k: j[k] for k in ("episode_id", "view")}, "reply": reply,
+                    "verdict": None, "score": score, "kind": kind, "error": err}
         v, kind = parse_verdict(reply)
         return {**{k: j[k] for k in ("episode_id", "view")}, "reply": reply,
                 "verdict": v, "kind": kind, "error": err}
@@ -78,11 +87,17 @@ def _score(jobs: list[dict], mcfg: dict, qwen_url: str | None) -> list[dict]:
 
 @app.local_entrypoint()
 def main(episodes: str, monitor: str = "gemini", views: str = "nested", dry_run: bool = False,
-         confirm: bool = False, local_env: str = "", max_tokens: int = 0) -> None:
+         confirm: bool = False, local_env: str = "", max_tokens: int = 0,
+         question: str = "original", monitor_lang: str = "match", channels: str = "") -> None:
     from src import prompts as P
     from src.run_meta import config_hash, git_commit, load_cfg
     from src.schema import validate_episode, validate_verdict
 
+    if question not in ("original", "accept", "score") or monitor_lang not in ("match", "vi", "en", "zh"):
+        raise SystemExit("--question original|accept|score, --monitor-lang match|vi|en|zh")
+    if question in ("accept", "score") and views in ("extra", "standard", "summary"):
+        raise SystemExit(f"--question accept: '{views}' cannot take it ('standard' keeps its own rule; "
+                         "'extra' and 'summary' do not show the action)")
     cfg = load_cfg()
     mcfg = dict(cfg["monitors"][monitor])
     if max_tokens:
@@ -97,8 +112,12 @@ def main(episodes: str, monitor: str = "gemini", views: str = "nested", dry_run:
         if bad:
             raise SystemExit(f"{r.get('episode_id')}: {bad}")
     from src.episode import load_items
-    items = {it["item_id"]: it for s in ("market", "workflow", "ext") for it in load_items(s)}
+    from src.episode import items_path
+    sets = ("market", "workflow", "ext") + tuple(s for s in ("market_en", "market_zh") if items_path(s).exists())
+    items = {it["item_id"]: it for s in sets for it in load_items(s)}
     scorable = [r for r in recs if r["post"]["kind"] == "choice" and r.get("report")]
+    if channels:  # e.g. "raw" for the language arm's Vietnamese comparison
+        scorable = [r for r in scorable if r["channel"] in channels.split(",")]
     from src.views import episode_ctx, load_summaries, turn1_by_family, turn1_by_item
     turn1, summaries = turn1_by_item(recs), load_summaries(path)
     fam = turn1_by_family(recs, items)
@@ -107,26 +126,44 @@ def main(episodes: str, monitor: str = "gemini", views: str = "nested", dry_run:
     jobs = []
     for r in scorable:
         it = items[r["item_id"]]
-        tpl = P.T(it)
-        ctx = episode_ctx(r, it, turn1, summaries, fam)
+        mlang = P.lang(it) if monitor_lang == "match" else monitor_lang
+        if mlang == P.lang(it):
+            tpl = P.T(it)
+        elif it.get("setting", "market") in ("market", "market_en", "market_zh"):
+            # the other language's frame; the item text stays in the episode's own language
+            tpl = P.SETTINGS[P.MARKET_BY_LANG[mlang]]
+        else:
+            raise SystemExit(f"{r['episode_id']}: no {mlang} monitor frame for setting {it.get('setting')}")
+        ctx = episode_ctx(r, it, turn1, summaries, fam, lang=mlang)
         if views == "summary" and not ctx["summary"]:
             continue
         chosen = {"nested": P.VIEWS, "extra": ("report_only", "message_only"),
                   "all": P.VIEWS + ("report_only", "message_only"), "standard": ("standard",),
                   "baseline_info": ("baseline_info",), "pop_baseline": ("pop_baseline",),
                   "summary": ("summary",), "family_baseline": ("family_baseline",),
-                  "channel": ("delivered", "raw")}[views]
+                  "channel": ("delivered", "raw"), "delivered": ("delivered",)}[views]
+        if question in ("accept", "score"):
+            chosen = tuple(v for v in chosen if v in P.ACCEPT_VIEWS)
         for v in chosen:
             if v == "raw" and r["channel"] == "raw":
                 continue
+            view_text = P.render_view(v, ctx, tpl["VIEW_BLOCKS"])
+            if v == "standard":
+                if mlang != "vi":
+                    raise SystemExit("the standard view has no English rule yet")
+                user = P.STANDARD_USER.format(view=view_text)
+            else:
+                user = P.MONITOR_QUESTIONS[(mlang, question)].format(
+                    view=view_text, agent_name=it["agent_name"], counterpart_name=it["counterpart_name"])
             jobs.append({"episode_id": r["episode_id"], "view": v, "system": tpl["MONITOR_SYSTEM"],
-                         "view_text": P.render_view(v, ctx, tpl["VIEW_BLOCKS"])})
+                         "view_text": view_text, "user": user, "question": question})
     print(f"monitor       {monitor} ({mcfg['model']})")
     print(f"episodes      {len(recs)}   scorable {len(scorable)}   not scorable {len(recs) - len(scorable)}")
+    print(f"question      {question}   monitor language {monitor_lang}")
     print(f"calls         {len(jobs)}")
     if dry_run:
         print("--dry-run: no call made. First view:\n")
-        print(jobs[0]["view_text"] if jobs else "(none)")
+        print((jobs[0]["system"] + "\n\n" + jobs[0]["user"]) if jobs else "(none)")
         return
     if len(jobs) > 200 and not confirm:
         raise SystemExit("more than 200 monitor calls: re-run with --confirm (cost guard)")
@@ -144,10 +181,15 @@ def main(episodes: str, monitor: str = "gemini", views: str = "nested", dry_run:
     else:
         out = score.remote(jobs, mcfg, qwen_url)
     stamp = {"monitor": monitor, "model": mcfg["model"], "max_tokens": mcfg.get("max_tokens"), "config_hash": config_hash(cfg),
+             "question": question, "monitor_lang": monitor_lang,
              "git_commit": git_commit(), "timestamp": datetime.now(timezone.utc).isoformat()}
     suffix = {"nested": "", "extra": "--extra", "all": "", "standard": "--standard",
               "baseline_info": "--baseline_info", "pop_baseline": "--pop_baseline",
-              "summary": "--summary", "family_baseline": "--family_baseline", "channel": ""}[views]
+              "summary": "--summary", "family_baseline": "--family_baseline", "channel": "",
+              "delivered": "--delivered"}[views]
+    suffix += {"accept": "--accept", "score": "--score"}.get(question, "") + (
+        f"--mlang-{monitor_lang}" if monitor_lang != "match" else "") + (
+        f"--ch-{channels.replace(',', '-')}" if channels else "")
     dest = ROOT / "data" / "monitor" / f"{path.stem}__{monitor}{suffix}.jsonl"
     dest.parent.mkdir(parents=True, exist_ok=True)
     with dest.open("w") as fh:

@@ -76,6 +76,14 @@ monitors:
     max_tokens: 2000
     temperature: null
     reasoning: true
+  # Strong monitor for the language arm's 0-100 score (2026-10-28, the human). Not an agent anywhere.
+  sonnet:
+    client: anthropic
+    model: claude-sonnet-5-5
+    effort: low                # thinking stays on; low effort for a one-number answer
+    max_tokens: 2000
+    temperature: null
+    reasoning: true
   gemini:
     client: gemini
     model: gemini-2.5-flash
@@ -90,6 +98,14 @@ monitors:
     temperature: 0.0
     reasoning: false               # no thinking mode
     chat_template_kwargs: false    # its mistral tokenizer rejects them
+    max_tokens: 400
+  # Added score monitor (2026-10-29, the human, post hoc): multilingual, Mistral's size class.
+  # Same developer as the Gemini agent (a different model). Summarizer in the main study only.
+  gemma:
+    app: vllm-gemma-3-27b-it
+    model: google/gemma-3-27b-it
+    temperature: 0.0
+    reasoning: false
     max_tokens: 400
   qwen:
     app: vllm-qwen3-8b-ep
